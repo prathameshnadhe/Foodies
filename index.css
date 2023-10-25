@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.nav-items {
+  padding: 0rem 1rem;
+  font-size: 1.5rem;
+}
+
+.nav-items > ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-items > ul > li {
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.resto-card {
+  background-color: #dfdfdf;
+  width: 17rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
+}
+
+.resto-card:hover {
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: #cccccc;
+}
+
+.resto-card-data {
+  margin: 0.8rem;
+}
+
+.search {
+  padding: 1rem;
+}
+
+.resto-cover-img {
+  width: 17rem;
+  height: 12rem;
+}
+
+.resto-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+}
