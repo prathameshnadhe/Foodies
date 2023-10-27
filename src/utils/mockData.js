@@ -1,48 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import logo from "./imgs/Foodies.jpg";
-
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={logo} alt="Foodies logo" />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = (props) => {
-  const { restoData } = props;
-
-  const { name, cuisine, rating, cft } = restoData?.info;
-  return (
-    <div className="resto-card">
-      <img
-        className="resto-cover-img"
-        src={restoData.info.image.url}
-        alt="food_logo"
-      />
-      <div className="resto-card-data">
-        <h2>{name}</h2>
-        <h4>{cuisine.join(", ")}</h4>
-        <h4>{rating.aggregate_rating}</h4>
-        <h4>{cft.text}</h4>
-        <h4>{restoData.order.deliveryTime}</h4>
-      </div>
-    </div>
-  );
-};
-
-const restoList = [
+export let restaurantList = [
   {
     type: "restaurant",
     info: {
@@ -584,28 +540,4 @@ const restoList = [
   },
 ];
 
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="resto-container">
-        {restoList.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} restoData={restaurant} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout />);
+// export default restoList;

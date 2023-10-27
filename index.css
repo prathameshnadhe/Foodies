@@ -51,3 +51,12 @@
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 1rem;
 }
+
+.body {
+  margin: 0.2rem;
+}
+
+.top-rated-resto {
+  margin: 0.5rem;
+  cursor: pointer;
+}
