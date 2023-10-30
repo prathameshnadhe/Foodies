@@ -1,20 +1,26 @@
+import { CDN_URL } from "../utils/constant";
+
 const RestaurantCard = (props) => {
   const { restoData } = props;
 
-  const { name, cuisine, rating, cft } = restoData?.info;
+  // const { name, cuisine, rating, cft } = restoData?.info;
+  const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, sla } =
+    restoData?.info;
+
   return (
     <div className="resto-card">
       <img
         className="resto-cover-img"
-        src={restoData.info.image.url}
+        src={CDN_URL + cloudinaryImageId}
         alt="food_logo"
       />
       <div className="resto-card-data">
         <h2>{name}</h2>
-        <h4>{cuisine.join(", ")}</h4>
-        <h4>{rating.aggregate_rating}</h4>
-        <h4>{cft.text}</h4>
-        <h4>{restoData.order.deliveryTime}</h4>
+        <h4>{cuisines.join(", ")}</h4>
+        <h4>{avgRating} stars</h4>
+        <h4>{costForTwo}</h4>
+        {/* <h4>{sla.lastMileTravelString}</h4> */}
+        <h4>{sla.slaString}</h4>
       </div>
     </div>
   );

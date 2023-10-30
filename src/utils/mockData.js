@@ -314,7 +314,7 @@ export let restaurantList = [
       id: "8",
       name: "KFC",
       image: {
-        url: "https://b.zmtcdn.com/data/pictures/chains/4/10624/337986458ed68cac8690991905bc68d5_o2_featured_v2.jpg",
+        url: "https://b.zmtcdn.com/data/pictures/chains/4/10624/148024162061ada077592ebeaef52f89_o2_featured_v2.jpg",
       },
       rating: {
         has_fake_reviews: 0,

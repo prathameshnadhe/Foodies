@@ -25,6 +25,7 @@
   width: 17rem;
   padding: 0.2rem;
   margin: 0.2rem;
+  border-radius: 1rem;
 }
 
 .resto-card:hover {
@@ -44,6 +45,7 @@
 .resto-cover-img {
   width: 17rem;
   height: 12rem;
+  border-radius: 1rem;
 }
 
 .resto-container {
@@ -59,4 +61,32 @@
 .top-rated-resto {
   margin: 0.5rem;
   cursor: pointer;
+  border-radius: 1rem;
+}
+
+.shimmer-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+  margin-top: 3.6rem;
+}
+
+.shimmer-card {
+  width: 17rem;
+  height: 25rem;
+  background-color: #f0f0f0;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  border-radius: 1rem;
+}
+
+.login {
+  font-size: 1.2rem;
+  padding: 0 1.5rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+}
+
+.filter {
+  display: flex;
 }
