@@ -23,6 +23,7 @@
 .resto-card {
   background-color: #dfdfdf;
   width: 17rem;
+  height: 29rem;
   padding: 0.2rem;
   margin: 0.2rem;
   border-radius: 1rem;
@@ -89,4 +90,9 @@
 
 .filter {
   display: flex;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
 }
