@@ -1,0 +1,19 @@
+{
+  "name": "foodie",
+  "version": "1.0.0",
+  "description": "Food Delivery Platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prathameshnadhe/Foodies.git"
+  },
+  "author": "Prathamesh Nadhe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prathameshnadhe/Foodies/issues"
+  },
+  "homepage": "https://github.com/prathameshnadhe/Foodies#readme"
+}
