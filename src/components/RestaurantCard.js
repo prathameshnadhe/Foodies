@@ -1,16 +1,15 @@
+import { RESTOCOVERIMG } from "../utils/constants";
+
 const RestaurantCard = (props) => {
-  console.log(props);
   const { restoData } = props;
   const { name, cuisines, avgRating, costForTwo, sla, cloudinaryImageId } =
     restoData?.info;
+
   return (
     <div className="resto-card">
       <img
         className="resto-cover-img"
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
+        src={RESTOCOVERIMG + cloudinaryImageId}
         alt="resto-logo"
       />
       <div className="resto-card-content">

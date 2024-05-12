@@ -14,13 +14,6 @@
   width: 100%;
   box-shadow: 0 15px 40px -20px rgba(2, 2, 3, 0.15);
   background: #fff;
-  will-change: transform;
-  transform: translateZ(0);
-  transition: transform 0.3s ease;
-  padding: 0 20px;
-  top: 0;
-  left: 0;
-  right: 0;
 }
 
 .nav-items {
@@ -43,10 +36,11 @@
   color: orangered;
 }
 
-.search {
-  text-align: center;
-  padding: 1rem;
-  font-size: 2rem;
+.filter-btn {
+  margin: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
 }
 
 .resto-card {
