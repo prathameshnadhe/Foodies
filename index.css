@@ -36,10 +36,12 @@
   color: orangered;
 }
 
-.filter-btn {
+.filter {
+  display: flex;
   margin: 1rem;
   padding: 0.5rem;
   font-size: 1rem;
+  gap: 1rem;
   border-radius: 0.5rem;
 }
 
@@ -56,12 +58,19 @@
 
 .resto-card:hover {
   cursor: pointer;
-  /* background-color: #dbdbdb; */
+  box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.19),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background: rgb(245, 245, 245);
 }
 
 .resto-card-content {
-  margin-left: 0.5rem;
+  margin-left: 0.8rem;
+}
+
+.resto-card-context {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
 }
 
 .resto-cover-img {
@@ -77,4 +86,41 @@
   gap: 1rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.shimmer-container {
+  display: grid;
+  grid-template-columns: repeat(4, 0fr);
+  gap: 1rem;
+  margin-left: 10rem;
+  margin-right: auto;
+  margin-top: 4.5rem;
+}
+
+.shimmer-card {
+  box-shadow: 0 4px 8px 0 rgba(78, 78, 78, 0.19),
+    0 6px 20px 0 rgba(78, 78, 78, 0.19);
+  width: 17rem;
+  height: 28rem;
+  background: #fff;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  border-radius: 1rem;
+}
+
+.login {
+  font-size: 1.2rem;
+  padding: 0 1.5rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+}
+
+.card__icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.rupee {
+  color: green;
 }

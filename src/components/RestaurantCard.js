@@ -1,4 +1,5 @@
 import { RESTOCOVERIMG } from "../utils/constants";
+import bike from "../utils/svgs/delivery-bike.svg";
 
 const RestaurantCard = (props) => {
   const { restoData } = props;
@@ -14,10 +15,20 @@ const RestaurantCard = (props) => {
       />
       <div className="resto-card-content">
         <h3>{name}</h3>
-        <h4>{cuisines.join(", ")}</h4>
-        <h4>{avgRating} stars</h4>
-        <h4>{costForTwo}</h4>
-        <h4>{sla?.slaString}</h4>
+        <h4 className="resto-card-context">{cuisines.join(", ")}</h4>
+        <h4 className="resto-card-context">⭐ {avgRating} stars</h4>
+        <h4 className="resto-card-context">
+          {"\u00A0"}
+          <span className="rupee">₹</span>
+          {"\u00A0"}
+          {costForTwo.slice(1)}
+        </h4>
+        <div className="resto-card-context">
+          <svg className="card__icon">
+            <use xlinkHref={`${bike}#delivery-bike`}></use>
+          </svg>
+          <span>{sla?.deliveryTime} minutes</span>
+        </div>
       </div>
     </div>
   );
