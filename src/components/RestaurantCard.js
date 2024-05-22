@@ -1,5 +1,6 @@
 import { RESTOCOVERIMG } from "../utils/constants";
 import bike from "../utils/svgs/delivery-bike.svg";
+import placeholderImg from "../utils/placeholder-light.avif";
 
 const RestaurantCard = (props) => {
   const { restoData } = props;
@@ -8,11 +9,19 @@ const RestaurantCard = (props) => {
 
   return (
     <div className="resto-card">
-      <img
-        className="resto-cover-img"
-        src={RESTOCOVERIMG + cloudinaryImageId}
-        alt="resto-logo"
-      />
+      {cloudinaryImageId ? (
+        <img
+          className="resto-cover-img"
+          src={RESTOCOVERIMG + cloudinaryImageId}
+          alt="resto-logo"
+        />
+      ) : (
+        <img
+          className="resto-cover-img"
+          src={placeholderImg}
+          alt="resto-logo"
+        />
+      )}
       <div className="resto-card-content">
         <h3>{name}</h3>
         <h4 className="resto-card-context">{cuisines.join(", ")}</h4>

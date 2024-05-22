@@ -2,17 +2,25 @@ import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { HOME_API } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurant, serListOfRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [allRestaurantsBtn, setAllRestaurantsBtn] = useState(true);
 
   const topRatedRestaurants = () => {
     const filteredList = listOfRestaurant.filter(
-      (restaurant) => restaurant.info.avgRating >= 4.2
+      (restaurant) => restaurant.info.avgRating >= 4.5
     );
     setFilteredRestaurant(filteredList);
+    setAllRestaurantsBtn(false);
+  };
+
+  const allRestaurants = () => {
+    setFilteredRestaurant(listOfRestaurant);
+    setAllRestaurantsBtn(true);
   };
 
   const filterRestaurantCard = () => {
@@ -56,13 +64,21 @@ const Body = () => {
           />
           <button onClick={filterRestaurantCard}>Search</button>
         </div>
-        <button className="filter-btn" onClick={topRatedRestaurants}>
-          Top Rated Restaurants
-        </button>
+        {allRestaurantsBtn ? (
+          <button className="filter-btn" onClick={topRatedRestaurants}>
+            Top Rated Restaurants
+          </button>
+        ) : (
+          <button className="filter-btn" onClick={allRestaurants}>
+            All Restaurants
+          </button>
+        )}
       </div>
       <div className="resto-container">
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} restoData={restaurant} />
+          <Link to={`/restaurant/${restaurant.info.id}`} className="resto-link">
+            <RestaurantCard key={restaurant.info.id} restoData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

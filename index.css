@@ -16,6 +16,20 @@
   background: #fff;
 }
 
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  color: orangered;
+}
+
+.resto-link {
+  text-decoration: none;
+  color: black;
+}
+
 .nav-items {
   padding: 0rem 1rem;
   font-size: 1.5rem;
@@ -50,6 +64,7 @@
     0 6px 20px 0 rgba(78, 78, 78, 0.19);
   background: #fff;
   width: 17rem;
+  height: 28rem;
   padding: 0.2rem;
   margin: 0.2rem;
   border-radius: 1rem;
@@ -123,4 +138,25 @@
 
 .rupee {
   color: green;
+}
+
+/* Mobile Phones */
+@media screen and (max-width: 520px) {
+  .shimmer-container {
+    display: grid;
+    grid-template-columns: repeat(2, 0fr);
+    gap: 1rem;
+  }
+
+  .resto-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-left: 5rem;
+    margin-right: auto;
+  }
+}
+
+/* Tablets */
+@media screen and (min-width: 481px) and (max-width: 1050px) {
 }
