@@ -2,7 +2,7 @@
   "name": "foodie",
   "version": "1.0.0",
   "description": "Food Delivery Platform",
-  "main": "index.html",
+  "main": "App.js",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
