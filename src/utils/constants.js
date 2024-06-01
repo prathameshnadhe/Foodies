@@ -6,3 +6,6 @@ export const HOME_API =
 
 export const MENU_API =
   "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5162434&lng=73.8428574&restaurantId=";
+
+export const MENU_ITEM_IMG =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";

@@ -1,0 +1,13 @@
+.section {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+@media screen and (max-width: 520px) {
+  .section {
+    width: 190vw;
+  }
+}

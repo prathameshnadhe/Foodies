@@ -1,0 +1,37 @@
+.body {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+.filter {
+  display: flex;
+  margin: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  gap: 1rem;
+  border-radius: 0.5rem;
+}
+
+.resto-link {
+  text-decoration: none;
+  color: black;
+}
+
+.resto-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 520px) {
+  .resto-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-left: 2rem;
+    margin-right: auto;
+  }
+}

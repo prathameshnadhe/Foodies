@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
-import Shimmer from "./Shimmer";
-import { HOME_API } from "../utils/constants";
+import RestaurantCard from "../RestourantCard/RestaurantCard";
+import Shimmer from "../ShimmerUI/Shimmer";
+import { HOME_API } from "../../utils/constants";
 import { Link } from "react-router-dom";
+import "./Body.css";
 
 const Body = () => {
   const [listOfRestaurant, serListOfRestaurant] = useState([]);
@@ -50,7 +51,7 @@ const Body = () => {
     setFilteredRestaurant(list);
   };
 
-  return listOfRestaurant.length === 0 ? (
+  return listOfRestaurant && listOfRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -65,13 +66,9 @@ const Body = () => {
           <button onClick={filterRestaurantCard}>Search</button>
         </div>
         {allRestaurantsBtn ? (
-          <button className="filter-btn" onClick={topRatedRestaurants}>
-            Top Rated Restaurants
-          </button>
+          <button onClick={topRatedRestaurants}>Top Rated Restaurants</button>
         ) : (
-          <button className="filter-btn" onClick={allRestaurants}>
-            All Restaurants
-          </button>
+          <button onClick={allRestaurants}>All Restaurants</button>
         )}
       </div>
       <div className="resto-container">

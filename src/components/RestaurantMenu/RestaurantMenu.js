@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { MENU_API } from "../utils/constants";
-import RestoShimmer from "./RestoShimmer";
-import RestaurantMenuCard from "./RestaurantMenuCard";
+import { MENU_API } from "../../utils/constants";
+import RestoShimmer from "../ShimmerUI/RestoShimmer";
+import RestaurantMenuCard from "../RestaurantMenuCard/RestaurantMenuCard";
 import { useParams } from "react-router-dom";
+import "./RestaurantMenu.css";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
@@ -35,10 +36,12 @@ const RestaurantMenu = () => {
 
   const itemCards = recommendedMenu[0]?.card?.card?.itemCards;
 
-  return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <p>
+  return itemCards && itemCards.length === 0 ? (
+    <RestoShimmer />
+  ) : (
+    <div className="menu section">
+      <h1 style={{ fontSize: "3rem" }}>{name}</h1>
+      <p style={{ fontSize: "1.2rem" }}>
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
       <div>

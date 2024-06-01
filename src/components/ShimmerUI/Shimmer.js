@@ -1,4 +1,6 @@
-const RestoShimmer = () => {
+import "./shimmer.css";
+
+const Shimmer = () => {
   return (
     <div className="shimmer-container">
       <div className="shimmer-card"></div>
@@ -20,4 +22,4 @@ const RestoShimmer = () => {
   );
 };
 
-export default RestoShimmer;
+export default Shimmer;

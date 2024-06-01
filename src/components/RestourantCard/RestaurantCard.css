@@ -1,0 +1,45 @@
+.resto-card {
+  box-shadow: 0 4px 8px 0 rgba(78, 78, 78, 0.19),
+    0 6px 20px 0 rgba(78, 78, 78, 0.19);
+  background: #fff;
+  width: 17rem;
+  height: 28rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  border-radius: 1rem;
+  font-family: sans-serif;
+}
+
+.resto-card:hover {
+  cursor: pointer;
+  box-shadow: 0 20px 24px 0 rgba(0, 0, 0, 0.19),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: rgb(245, 245, 245);
+}
+
+.resto-card-content {
+  margin-left: 0.8rem;
+}
+
+.resto-card-context {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.resto-cover-img {
+  width: 17rem;
+  height: 12rem;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.card__icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.rupee {
+  color: green;
+}
