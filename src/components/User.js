@@ -5,7 +5,18 @@ const User = (props) => {
 
   useEffect(() => {
     // API Calls
+
+    let timer = setInterval(() => {
+      console.log("Hello Pratham!!");
+    }, 1000);
+
+    return () => {
+      console.log("useEffect return ");
+      clearInterval(timer);
+    };
   }, []);
+
+  async function getUserInfo() {}
 
   return (
     <div className="user-card">
