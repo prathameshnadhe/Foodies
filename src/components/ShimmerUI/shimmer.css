@@ -42,13 +42,19 @@
 @media screen and (max-width: 520px) {
   .shimmer-container {
     display: grid;
-    grid-template-columns: repeat(2, 0fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
+    margin: 6rem auto 0;
+  }
+
+  .shimmer-card {
+    padding: 0;
+    margin: 0 auto;
   }
 
   .shimmer-menu-item {
-    margin-left: 8rem;
-    width: 30rem;
-    height: 14rem;
+    margin: 0 auto;
+    width: 22rem;
+    height: 18rem;
   }
 }

@@ -67,7 +67,9 @@ const Body = () => {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button onClick={filterRestaurantCard}>Search</button>
+          <button className="search-button" onClick={filterRestaurantCard}>
+            Search
+          </button>
         </div>
         {allRestaurantsBtn ? (
           <button onClick={topRatedRestaurants}>Top Rated Restaurants</button>

@@ -94,4 +94,7 @@
 }
 
 @media screen and (max-width: 520px) {
+  .menu-item {
+    display: block;
+  }
 }

@@ -129,10 +129,6 @@
 
 /* Responsive styles for screens less than 500px */
 @media (max-width: 500px) {
-  .header {
-    width: 180%;
-  }
-
   .nav-items ul {
     display: none;
     flex-direction: column;
