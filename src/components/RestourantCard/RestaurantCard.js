@@ -1,6 +1,6 @@
 import { RESTOCOVERIMG } from "../../utils/constants";
 import bike from "../../utils/svgs/delivery-bike.svg";
-import placeholderImg from "../../utils/placeholder-light.avif";
+import placeHolderImg from "../../utils/placeholder-light.avif";
 import "./RestaurantCard.css";
 
 const RestaurantCard = (props) => {
@@ -19,7 +19,7 @@ const RestaurantCard = (props) => {
       ) : (
         <img
           className="resto-cover-img"
-          src={placeholderImg}
+          src={placeHolderImg}
           alt="resto-logo"
         />
       )}

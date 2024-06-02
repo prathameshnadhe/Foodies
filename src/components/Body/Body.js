@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "../RestourantCard/RestaurantCard";
 import Shimmer from "../ShimmerUI/Shimmer";
-import { HOME_API } from "../../utils/constants";
 import { Link } from "react-router-dom";
 import "./Body.css";
 
@@ -10,6 +9,7 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [allRestaurantsBtn, setAllRestaurantsBtn] = useState(true);
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   const topRatedRestaurants = () => {
     const filteredList = listOfRestaurant.filter(
@@ -41,14 +41,18 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(HOME_API);
-    const json = await data.json();
-    const list =
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
+    try {
+      const data = await fetch(`${base_url}/restaurants`);
+      const json = await data.json();
+      const list =
+        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
 
-    serListOfRestaurant(list);
-    setFilteredRestaurant(list);
+      serListOfRestaurant(list);
+      setFilteredRestaurant(list);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   return listOfRestaurant && listOfRestaurant.length === 0 ? (
@@ -73,7 +77,11 @@ const Body = () => {
       </div>
       <div className="resto-container">
         {filteredRestaurant.map((restaurant) => (
-          <Link to={`/restaurant/${restaurant.info.id}`} className="resto-link">
+          <Link
+            to={`/restaurant/${restaurant.info.id}`}
+            className="resto-link"
+            key={restaurant.info.id}
+          >
             <RestaurantCard key={restaurant.info.id} restoData={restaurant} />
           </Link>
         ))}

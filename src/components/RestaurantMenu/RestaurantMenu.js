@@ -8,15 +8,14 @@ import "./RestaurantMenu.css";
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
   const { resId } = useParams();
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     fetchMenu();
   }, []);
 
   const fetchMenu = async () => {
-    const data = await fetch(
-      MENU_API + resId + "&catalog_qa=undefined&submitAction=ENTER"
-    );
+    const data = await fetch(`${base_url}/restaurant/${resId}`);
     const json = await data.json();
 
     setResInfo(json?.data);
