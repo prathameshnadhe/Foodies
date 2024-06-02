@@ -12,7 +12,7 @@ const RestaurantMenuCard = (props) => {
     setIsExpanded(!isExpanded);
   };
 
-  const shortText = description.slice(0, 260);
+  const shortText = description.slice(0, 200);
 
   return (
     <div className="section-center">
@@ -26,7 +26,7 @@ const RestaurantMenuCard = (props) => {
           <div className="description-container">
             <p className="item-text">
               <span>{isExpanded ? description : shortText}</span>
-              {description.length > 260 && (
+              {description.length > 200 && (
                 <button onClick={toggleExpansion} className="toggle-button">
                   {isExpanded ? "...less" : "...more"}
                 </button>

@@ -36,7 +36,6 @@
   color: #fff;
 }
 .section-center {
-  width: 90vw;
   margin: 0 auto;
   max-width: 1170px;
   display: grid;
@@ -64,6 +63,7 @@
   justify-content: space-between;
   border-bottom: 0.5px dotted hsl(210, 22%, 49%);
   font-size: 1.3rem;
+  text-align: left;
 }
 .item-info h4 {
   margin-bottom: 0.5rem;
@@ -91,4 +91,7 @@
   font-size: 1em;
   display: inline;
   margin-left: 4px;
+}
+
+@media screen and (max-width: 520px) {
 }
