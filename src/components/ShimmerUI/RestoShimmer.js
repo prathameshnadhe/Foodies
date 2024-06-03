@@ -9,15 +9,6 @@ const RestoShimmer = () => {
       <div className="shimmer-menu-item"></div>
       <div className="shimmer-menu-item"></div>
       <div className="shimmer-menu-item"></div>
-      <div className="shimmer-menu-item"></div>
-      <div className="shimmer-menu-item"></div>
-      <div className="shimmer-menu-item"></div>
-      <div className="shimmer-menu-item"></div>
-      <div className="shimmer-menu-item"></div>
-      <div className="shimmer-menu-item"></div>
-      <div className="shimmer-menu-item"></div>
-      <div className="shimmer-menu-item"></div>
-      <div className="shimmer-menu-item"></div>
     </div>
   );
 };
