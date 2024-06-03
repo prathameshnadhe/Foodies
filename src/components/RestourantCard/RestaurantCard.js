@@ -25,7 +25,11 @@ const RestaurantCard = (props) => {
       )}
       <div className="resto-card-content">
         <h3>{name}</h3>
-        <h4 className="resto-card-context">{cuisines.join(", ")}</h4>
+        <h4 className="resto-card-context">
+          {cuisines.length <= 6
+            ? cuisines.join(", ")
+            : cuisines.slice(0, 6).join(", ") + " ..."}
+        </h4>
         <h4 className="resto-card-context">⭐ {avgRating} stars</h4>
         <h4 className="resto-card-context">
           {"\u00A0"}
