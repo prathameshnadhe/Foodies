@@ -4,17 +4,17 @@ import RestaurantMenuCard from "../RestaurantMenuCard/RestaurantMenuCard";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../../utils/useRestaurantMenu";
 import "./RestaurantMenu.css";
+import useOnlineStatus from "../../utils/useOnlineStatus";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-
+  // Custom Hook
   const resInfo = useRestaurantMenu(resId);
+  const onlineStatus = useOnlineStatus();
 
   if (resInfo === null) {
     return <RestoShimmer />;
   }
-
-  console.log(resInfo);
 
   const { name, cuisines, costForTwoMessage } =
     resInfo?.cards[2]?.card?.card?.info;
@@ -25,6 +25,14 @@ const RestaurantMenu = () => {
     );
 
   const itemCards = recommendedMenu[0]?.card?.card?.itemCards;
+
+  if (onlineStatus === false) {
+    return (
+      <h1 style={{ textAlign: "center" }}>
+        Looks like you'are offline!! Please check your internet connection;
+      </h1>
+    );
+  }
 
   return itemCards && itemCards.length === 0 ? (
     <RestoShimmer />
