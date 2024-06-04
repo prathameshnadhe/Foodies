@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../utils/Foodies.jpg";
+import logo from "../../utils/images/Foodies.jpg";
 import { useState } from "react";
 import "./Header.css"; // Ensure to import the CSS file
 

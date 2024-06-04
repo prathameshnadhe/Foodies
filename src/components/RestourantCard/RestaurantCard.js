@@ -1,6 +1,6 @@
 import { RESTOCOVERIMG } from "../../utils/constants";
 import bike from "../../utils/svgs/delivery-bike.svg";
-import placeHolderImg from "../../utils/placeholder-light.avif";
+import placeHolderImg from "../../utils/images/placeholder-light.avif";
 import "./RestaurantCard.css";
 
 const RestaurantCard = (props) => {

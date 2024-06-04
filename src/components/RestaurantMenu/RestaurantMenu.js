@@ -2,29 +2,21 @@ import { useEffect, useState } from "react";
 import RestoShimmer from "../ShimmerUI/RestoShimmer";
 import RestaurantMenuCard from "../RestaurantMenuCard/RestaurantMenuCard";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../../utils/useRestaurantMenu";
 import "./RestaurantMenu.css";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
   const { resId } = useParams();
-  const base_url = process.env.REACT_APP_BASE_URL;
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(`${base_url}/restaurant/${resId}`);
-    const json = await data.json();
-
-    setResInfo(json?.data);
-  };
+  const resInfo = useRestaurantMenu(resId);
 
   if (resInfo === null) {
     return <RestoShimmer />;
   }
 
-  const { name, cuisines, cloudinaryImageId, costForTwoMessage } =
+  console.log(resInfo);
+
+  const { name, cuisines, costForTwoMessage } =
     resInfo?.cards[2]?.card?.card?.info;
 
   const recommendedMenu =
