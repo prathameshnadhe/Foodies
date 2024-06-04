@@ -9,6 +9,11 @@ import Cart from "./components/Cart";
 import Error from "./components/Error/Error";
 import RestaurantMenu from "./components/RestaurantMenu/RestaurantMenu";
 
+// Chunking
+// Code Splitting
+// Dynamic bundling
+// Lazy Loading
+
 const AppLayout = () => {
   return (
     <div className="app">
