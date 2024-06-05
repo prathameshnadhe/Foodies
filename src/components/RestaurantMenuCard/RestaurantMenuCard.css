@@ -46,7 +46,7 @@
 .menu-item {
   display: grid;
   gap: 1rem 2rem;
-  max-width: 40rem;
+  max-width: 55rem;
   grid-template-columns: 15rem 1fr;
 }
 .photo {
