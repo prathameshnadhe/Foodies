@@ -24,6 +24,26 @@ const RestaurantMenu = () => {
       (card) => card.card.card.title === "Recommended"
     );
 
+  const maxItemCards =
+    resInfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.reduce(
+      (maxCard, currentCard) => {
+        const currentItemCards = currentCard?.card?.card?.itemCards;
+
+        if (
+          currentItemCards &&
+          (!maxCard ||
+            currentItemCards.length > maxCard?.card?.card?.itemCards?.length)
+        ) {
+          return currentCard;
+        }
+
+        return maxCard;
+      },
+      null
+    );
+
+  const maxItems = maxItemCards.card.card.itemCards;
+
   const itemCards = recommendedMenu[0]?.card?.card?.itemCards;
 
   if (onlineStatus === false) {
@@ -43,13 +63,13 @@ const RestaurantMenu = () => {
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
       <div>
-        {!itemCards || itemCards.length === 0 ? (
-          <p>No menu items available</p>
-        ) : (
-          itemCards.map((menu) => (
-            <RestaurantMenuCard key={menu.card.info.id} menuData={menu} />
-          ))
-        )}
+        {itemCards === undefined || itemCards?.length < 15
+          ? maxItems.map((menu) => (
+              <RestaurantMenuCard key={menu.card.info.id} menuData={menu} />
+            ))
+          : itemCards?.map((menu) => (
+              <RestaurantMenuCard key={menu.card.info.id} menuData={menu} />
+            ))}
       </div>
     </div>
   );

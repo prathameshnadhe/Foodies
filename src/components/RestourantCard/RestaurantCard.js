@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { RESTOCOVERIMG } from "../../utils/constants";
 import bike from "../../utils/svgs/delivery-bike.svg";
 import placeHolderImg from "../../utils/images/placeholder-light.avif";
@@ -7,14 +8,22 @@ const RestaurantCard = (props) => {
   const { restoData } = props;
   const { name, cuisines, avgRating, costForTwo, sla, cloudinaryImageId } =
     restoData?.info;
+  const [imgSrc, setImgSrc] = useState(
+    cloudinaryImageId ? `${RESTOCOVERIMG}${cloudinaryImageId}` : placeHolderImg
+  );
+
+  const handleError = () => {
+    setImgSrc(placeHolderImg);
+  };
 
   return (
     <div className="resto-card">
       {cloudinaryImageId ? (
         <img
           className="resto-cover-img"
-          src={RESTOCOVERIMG + cloudinaryImageId}
+          src={imgSrc}
           alt="resto-logo"
+          onError={handleError}
         />
       ) : (
         <img

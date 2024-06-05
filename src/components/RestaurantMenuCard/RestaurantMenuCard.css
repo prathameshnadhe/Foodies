@@ -46,7 +46,7 @@
 .menu-item {
   display: grid;
   gap: 1rem 2rem;
-  max-width: 55rem;
+  width: 80%;
   grid-template-columns: 15rem 1fr;
 }
 .photo {
@@ -96,5 +96,6 @@
 @media screen and (max-width: 520px) {
   .menu-item {
     display: block;
+    width: 100%;
   }
 }
