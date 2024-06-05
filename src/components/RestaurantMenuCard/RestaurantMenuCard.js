@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MENU_ITEM_IMG } from "../../utils/constants";
 import placeHolderImg from "../../utils/images/placeHolderDish.png";
 import "./RestaurantMenuCard.css";
@@ -19,6 +19,10 @@ const RestaurantMenuCard = (props) => {
   const handleError = () => {
     setImgSrc(placeHolderImg);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const shortText = description?.slice(0, 200);
   return (

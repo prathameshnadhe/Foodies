@@ -4,13 +4,18 @@ import "./shimmer.css";
 const Shimmer = () => {
   const [showContent, setShowContent] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowContent(true);
-    }, 5000); // 5 seconds in milliseconds
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setShowContent(true);
+  //   }, 5000); // 5 seconds in milliseconds
 
-    return () => clearTimeout(timer);
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
+
   return (
     <div className="shimmer-container">
       <div className="shimmer-card">
