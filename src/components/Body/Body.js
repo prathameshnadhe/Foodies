@@ -70,23 +70,38 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="flex">
+        <div className="m-4 px-4 flex items-center w-[100%] input-main">
           <input
             type="text"
-            className="search-box"
+            className="px-2 py-1 border border-solid border-black h-3 input-width"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="search-button" onClick={filterRestaurantCard}>
+          <button
+            className="px-4 py-2 bg-green-100 m-4 rounded-lg border-green-200"
+            onClick={filterRestaurantCard}
+          >
             Search
           </button>
         </div>
-        {allRestaurantsBtn ? (
-          <button onClick={topRatedRestaurants}>Top Rated Restaurants</button>
-        ) : (
-          <button onClick={allRestaurants}>All Restaurants</button>
-        )}
+        <div className="m-4 px-4 flex items-center input-padding">
+          {allRestaurantsBtn ? (
+            <button
+              className="px-4 py-2 bg-green-100 rounded-lg border-solid border-green-200"
+              onClick={topRatedRestaurants}
+            >
+              Top Rated Restaurants
+            </button>
+          ) : (
+            <button
+              className="px-4 py-2 bg-green-100 rounded-lg border-solid border-green-200"
+              onClick={allRestaurants}
+            >
+              All Restaurants
+            </button>
+          )}
+        </div>
       </div>
       <div className="resto-container">
         {filteredRestaurant.map((restaurant) => (

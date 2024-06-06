@@ -63,7 +63,7 @@ const RestaurantMenu = () => {
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
       <div>
-        {itemCards === undefined || itemCards?.length < 15
+        {itemCards === undefined || itemCards?.length < 8
           ? maxItems.map((menu) => (
               <RestaurantMenuCard key={menu.card.info.id} menuData={menu} />
             ))
