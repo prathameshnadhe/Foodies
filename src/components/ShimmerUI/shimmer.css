@@ -2,9 +2,8 @@
   display: grid;
   grid-template-columns: repeat(4, 0fr);
   gap: 1rem;
-  margin-left: 10rem;
-  margin-right: auto;
   margin-top: 4.5rem;
+  justify-content: center;
 }
 
 .message-overlay {
@@ -68,10 +67,9 @@
 /* Mobile Phones */
 @media screen and (max-width: 520px) {
   .shimmer-container {
-    display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
-    margin: 6rem auto 0;
+    margin: 6rem;
   }
 
   .shimmer-card {

@@ -35,9 +35,9 @@ const RestaurantCard = (props) => {
       <div className="resto-card-content">
         <h3>{name}</h3>
         <h4 className="resto-card-context">
-          {cuisines.length <= 6
+          {cuisines.length <= 4
             ? cuisines.join(", ")
-            : cuisines.slice(0, 6).join(", ") + " ..."}
+            : cuisines.slice(0, 4).join(", ") + " ..."}
         </h4>
         <h4 className="resto-card-context">⭐ {avgRating} stars</h4>
         <h4 className="resto-card-context">
@@ -55,6 +55,23 @@ const RestaurantCard = (props) => {
       </div>
     </div>
   );
+};
+
+// Higher Order Component
+
+// inpunt - RestaurantCard ==> RestaurantCardTopRated
+
+export const withTopRated = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-green-200 text-black m-3 p-2 rounded-lg">
+          Top Rated
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;
