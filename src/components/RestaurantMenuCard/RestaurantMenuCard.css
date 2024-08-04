@@ -36,17 +36,15 @@
   color: #fff;
 }
 .section-center {
-  margin: 0 auto;
   max-width: 1170px;
   display: grid;
-  gap: 3rem 2rem;
+  gap: 1rem;
   justify-items: center;
-  padding: 1rem;
+  padding: 1rem 1rem 0;
 }
 .menu-item {
   display: grid;
   gap: 1rem 2rem;
-  width: 80%;
   grid-template-columns: 15rem 1fr;
 }
 .photo {
@@ -73,7 +71,6 @@
 }
 .item-text {
   margin-bottom: 0;
-  padding-top: 1rem;
   text-align: justify;
   font-size: 1.1rem;
 }

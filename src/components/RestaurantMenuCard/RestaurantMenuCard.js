@@ -46,6 +46,7 @@ const RestaurantMenuCard = (props) => {
           </div>
         </div>
       </article>
+      <div className="bg-gray-300 m-[20px] h-[0.5px] w-[100%]"> </div>
     </div>
   );
 };
