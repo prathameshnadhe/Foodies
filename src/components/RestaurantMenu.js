@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import RestoShimmer from "../ShimmerUI/RestoShimmer";
-import RestaurantMenuCard from "../RestaurantMenuCard/RestaurantMenuCard";
+import RestoShimmer from "./ShimmerUI/RestoShimmer";
+import RestaurantMenuCard from "./RestaurantMenuCard/RestaurantMenuCard";
 import { useParams } from "react-router-dom";
-import useRestaurantMenu from "../../utils/useRestaurantMenu";
-import "./RestaurantMenu.css";
-import useOnlineStatus from "../../utils/useOnlineStatus";
-import RestaurantCategory from "../RestaurantCategory";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();

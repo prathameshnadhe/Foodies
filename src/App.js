@@ -6,7 +6,7 @@ import Body from "./components/Body";
 import ContactUs from "./components/ContactUs";
 import Cart from "./components/Cart";
 import Error from "./components/Error/Error";
-import RestaurantMenu from "./components/RestaurantMenu/RestaurantMenu";
+import RestaurantMenu from "./components/RestaurantMenu";
 
 // Chunking
 // Code Splitting

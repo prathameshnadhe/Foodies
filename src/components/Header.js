@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <nav className="bg-[#fff] shadow-md">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 my-4">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 my-4 tablet:ml-[3rem] tablet:mr-[3rem]">
         <div className="h-20">
           <img className="h-20" src={logo} alt="header_img" />
         </div>
