@@ -20,35 +20,6 @@ const RestaurantMenu = () => {
   const { name, cuisines, costForTwoMessage } =
     resInfo?.cards[2]?.card?.card?.info;
 
-  const recommendedMenu =
-    resInfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-      (card) => card.card.card.title === "Recommended"
-    );
-
-  const maxItemCards =
-    resInfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.reduce(
-      (maxCard, currentCard) => {
-        const currentItemCards = currentCard?.card?.card?.itemCards;
-
-        if (
-          currentItemCards &&
-          (!maxCard ||
-            currentItemCards.length > maxCard?.card?.card?.itemCards?.length)
-        ) {
-          return currentCard;
-        }
-
-        return maxCard;
-      },
-      null
-    );
-
-  const maxItems = maxItemCards.card.card.itemCards;
-
-  const itemCards = recommendedMenu[0]?.card?.card?.itemCards;
-
-  console.log(resInfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-
   const categories =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (itemCategory) =>
@@ -66,24 +37,14 @@ const RestaurantMenu = () => {
     );
   }
 
-  return itemCards && itemCards.length === 0 ? (
+  return categories && categories.length === 0 ? (
     <RestoShimmer />
   ) : (
-    <div className="menu section">
-      <h1 className="font-bold my-6">{name}</h1>
+    <div className="w-8/12 mx-auto my-0 text-center">
+      <h1 className="font-bold my-6 text-3xl">{name}</h1>
       <p className="font-bold text-lg">
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
-      {/* <div>
-        {itemCards === undefined || itemCards?.length < 8
-          ? maxItems.map((menu) => (
-              <RestaurantMenuCard key={menu.card.info.id} menuData={menu} />
-            ))
-          : itemCards?.map((menu) => (
-              <RestaurantMenuCard key={menu.card.info.id} menuData={menu} />
-            ))}
-      </div> */}
-
       {categories.map((category) => (
         <RestaurantCategory data={category?.card?.card} />
       ))}

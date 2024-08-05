@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import RestaurantCard, { withTopRated } from "../RestourantCard/RestaurantCard";
-import Shimmer from "../ShimmerUI/Shimmer";
+import RestaurantCard, { withTopRated } from "./RestaurantCard";
+import Shimmer from "./ShimmerUI/Shimmer";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "../../utils/useOnlineStatus";
-import "./Body.css";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -68,17 +67,15 @@ const Body = () => {
     );
   }
 
-  console.log("listOfRestaurant", listOfRestaurant);
-
   return listOfRestaurant && listOfRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="flex">
-        <div className="m-4 px-4 flex items-center w-[100%] input-main">
+    <div className="ml-auto mr-auto">
+      <div className="w-10/12 flex justify-between ml-auto mr-auto max-mobile:w-full max-tablet:w-full">
+        <div className="m-4 flex items-center input-main">
           <input
             type="text"
-            className="px-2 py-1 border border-solid border-black h-3 input-width"
+            className="px-2 py-1 border border-solid border-black h-3 input-width rounded-sm max-mobile:w-[6rem]"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
@@ -89,7 +86,7 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="m-4 px-4 flex items-center input-padding">
+        <div className="flex items-center input-padding">
           {allRestaurantsBtn ? (
             <button
               className="px-4 py-2 bg-green-100 rounded-lg border-solid border-green-200"
@@ -107,11 +104,11 @@ const Body = () => {
           )}
         </div>
       </div>
-      <div className="resto-container">
+      <div className="w-10/12 flex flex-wrap auto-cols-min justify-center gap-2 ml-auto mr-auto">
         {filteredRestaurant.map((restaurant) => (
           <Link
             to={`/restaurant/${restaurant.info.id}`}
-            className="resto-link"
+            className="no-underline text-black mx-0 my-auto"
             key={restaurant.info.id}
           >
             {

@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Body from "./components/Body/Body";
+import Header from "./components/Header";
+import Body from "./components/Body";
 import ContactUs from "./components/ContactUs";
 import Cart from "./components/Cart";
 import Error from "./components/Error/Error";
