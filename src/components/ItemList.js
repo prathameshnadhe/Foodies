@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { MENU_ITEM_IMG } from "./../utils/constants";
 import placeHolderImg from "./../utils/images/placeHolderDish.png";
-import RestaurantMenuCard from "./RestaurantMenuCard/RestaurantMenuCard";
 
 const ItemList = ({ items }) => {
-  console.log(items);
   return (
     <div>
-      {items.map((item) => {
+      {items.map((item, index) => {
         const [imgSrc, setImgSrc] = useState(
           item?.card?.info?.imageId
             ? `${MENU_ITEM_IMG}${item?.card?.info?.imageId}`
@@ -37,13 +35,13 @@ const ItemList = ({ items }) => {
         };
 
         return (
-          <div className="font-serif">
+          <div>
             <div
               key={item.card?.info?.id}
-              className="p-2 m-2 border-b-4 border-gray-700 text-left flex justify-between"
+              className="p-2 m-2 border-b-4 text-left flex justify-between"
             >
               <div>
-                <div className="flex justify-between p-2 m-2 text-xl font-bold">
+                <div className="flex justify-between p-2 m-2 text-xl font-bold text-gray-800">
                   <span>{item?.card?.info?.name}</span>
                   <span className="p2">
                     ₹
@@ -59,7 +57,7 @@ const ItemList = ({ items }) => {
                 <img
                   src={imgSrc}
                   alt={item?.card?.info?.name}
-                  className="w-[200px] h-[200px] object-cover rounded-lg shadow-md"
+                  className="w-[200px] h-[200px] object-cover rounded-lg"
                   onError={handleError}
                 />
                 {addBtn ? (
@@ -90,7 +88,9 @@ const ItemList = ({ items }) => {
                 )}
               </div>
             </div>
-            <div className="bg-gray-300 m-[20px] h-[0.5px]"> </div>
+            {index !== items.length - 1 && (
+              <div className="bg-gray-300 m-[20px] h-[0.5px]"> </div>
+            )}
           </div>
         );
       })}

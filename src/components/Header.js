@@ -27,7 +27,7 @@ const Header = () => {
           aria-controls="navbar-default"
           aria-expanded={isMenuOpen}
         >
-          <span class="sr-only">Open main menu</span>
+          <span className="sr-only">Open main menu</span>
           <svg
             className="w-5 h-5"
             aria-hidden="true"
