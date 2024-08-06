@@ -35,11 +35,8 @@ const ItemList = ({ items }) => {
         };
 
         return (
-          <div>
-            <div
-              key={item.card?.info?.id}
-              className="p-2 m-2 border-b-4 text-left flex justify-between"
-            >
+          <div key={item.card?.info?.id}>
+            <div className="p-2 m-2 border-b-4 text-left flex justify-between">
               <div>
                 <div className="flex justify-between p-2 m-2 text-xl font-bold text-gray-800">
                   <span>{item?.card?.info?.name}</span>

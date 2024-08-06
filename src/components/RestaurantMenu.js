@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import RestoShimmer from "./ShimmerUI/RestoShimmer";
-import RestaurantMenuCard from "./RestaurantMenuCard/RestaurantMenuCard";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -8,6 +7,7 @@ import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
+  const [showIndex, setShowIndex] = useState(0);
   // Custom Hook
   const resInfo = useRestaurantMenu(resId);
   const onlineStatus = useOnlineStatus();
@@ -42,10 +42,14 @@ const RestaurantMenu = () => {
       <p className="font-bold text-lg">
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
-      {categories.map((category) => (
+      {categories.map((category, index) => (
+        // Controlled Component
         <RestaurantCategory
           key={category?.card?.card?.title}
           data={category?.card?.card}
+          showItems={index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)}
+          setShowIndexClose={() => setShowIndex(null)}
         />
       ))}
     </div>
