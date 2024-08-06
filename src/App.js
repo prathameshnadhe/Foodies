@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import Header from "./components/Header";
@@ -7,6 +7,7 @@ import ContactUs from "./components/ContactUs";
 import Cart from "./components/Cart";
 import Error from "./components/Error/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./utils/UserContext";
 
 // Chunking
 // Code Splitting
@@ -18,12 +19,26 @@ const Grocery = lazy(() => import("./components/Grocery/Grocery"));
 
 const AboutUs = lazy(() => import("./components/AboutUs"));
 
+
 const AppLayout = () => {
+  // authentication
+  const [userName, setUserName] = useState("");
+  
+  useEffect(() => {
+    // Make an API call and send username and password
+    const data = {
+      name: "Prathamesh",
+    };
+    setUserName(data.name);
+  });
+  
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 

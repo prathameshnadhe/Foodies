@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import logo from "./../utils/images/Foodies.jpg";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { loggedInUser } = useContext(UserContext);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -96,8 +98,13 @@ const Header = () => {
                 Cart
               </Link>
             </li>
+            {btnName === "Logout" && (
+              <li className="block py-2 px-3 no-underline font-bold text-black text-2xl cursor-pointer hover:text-orange-600 rounded tablet:bg-transparent tablet:p-0">
+                {loggedInUser}
+              </li>
+            )}
             <li
-              className="block py-2 px-3 no-underline text-black text-2xl hover:text-orange-600 rounded tablet:bg-transparent tablet:p-0"
+              className="block py-2 px-3 no-underline text-black text-2xl hover:text-orange-600 rounded tablet:bg-transparent tablet:p-0 cursor-pointer"
               onClick={() => {
                 setBtnName(btnName === "Login" ? "Logout" : "Login");
                 closeMenu();

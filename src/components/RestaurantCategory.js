@@ -31,7 +31,6 @@ const RestaurantCategory = ({
         {/* Accordion body */}
         {showItems && <ItemList items={data.itemCards} />}
       </div>
-      {/* <div className="h-4 border-b-[16px] mx-auto bg-[#e6e6e6] w-8/12 max-laptop:w-9/12"></div> */}
     </div>
   );
 };

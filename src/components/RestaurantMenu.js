@@ -1,5 +1,5 @@
 import { useState } from "react";
-import RestoShimmer from "./ShimmerUI/RestoShimmer";
+import RestoShimmer from "./RestoShimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import useOnlineStatus from "../utils/useOnlineStatus";

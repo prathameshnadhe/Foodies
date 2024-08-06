@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import RestaurantCard, { withTopRated } from "./RestaurantCard";
-import Shimmer from "./ShimmerUI/Shimmer";
+import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
@@ -40,6 +40,8 @@ const Body = () => {
     setFilteredRestaurant(filteredRestaurant);
   };
 
+  console.log("filteredRestaurant", filteredRestaurant);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -71,32 +73,55 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="ml-auto mr-auto">
-      <div className="w-10/12 flex justify-between ml-auto mr-auto max-mobile:w-full max-tablet:w-full">
+      <div className="w-10/12 flex justify-center max-mobile:justify-between ml-auto mr-auto max-mobile:w-full max-tablet:w-full">
         <div className="m-4 flex items-center input-main">
-          <input
-            type="text"
-            className="px-2 py-1 border border-solid border-black h-3 input-width rounded-sm max-mobile:w-[6rem]"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-          />
-          <button
-            className="px-4 py-2 bg-green-100 m-4 rounded-lg border-green-200"
-            onClick={filterRestaurantCard}
-          >
-            Search
-          </button>
+          <div class="max-w-md mx-auto">
+            <div class="relative">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3">
+                <svg
+                  class="w-4 h-4 text-gray-500"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                id="default-search"
+                class="block w-[24rem] max-mobile:w-[11rem] max-tablet:w-[20rem] max-laptop:w-[20rem] p-4 ps-10 text-md text-gray-800 border-0 focus:outline-none shadow-custom rounded-lg bg-[#fff]"
+                placeholder="Pizza, Burger, Biryani..."
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+              <button
+                class="text-black font-bold absolute end-[1rem] bottom-2.5 mobile:bottom-[0.4rem] bg-green-200 border-solid border-green-300 cursor-pointer hover:bg-green-300 hover:border-green-500 rounded-lg text-md px-4 py-2 max-mobile:px-2  max-mobile:py-1"
+                onClick={filterRestaurantCard}
+              >
+                Search
+              </button>
+            </div>
+          </div>
         </div>
         <div className="flex items-center input-padding">
           {allRestaurantsBtn ? (
             <button
-              className="px-4 py-2 bg-green-100 rounded-lg border-solid border-green-200"
+              className="px-4 py-2 bg-green-100 rounded-lg font-bold border-solid border-green-300 hover:bg-green-300 hover:border-green-500 cursor-pointer max-mobile:px-2 max-mobile:py-1"
               onClick={topRatedRestaurants}
             >
               Top Rated Restaurants
             </button>
           ) : (
             <button
-              className="px-4 py-2 bg-green-100 rounded-lg border-solid border-green-200"
+              className="px-4 py-2 bg-green-100 rounded-lg font-bold border-solid border-green-300 hover:bg-green-300 hover:border-green-500 cursor-pointer"
               onClick={allRestaurants}
             >
               All Restaurants
@@ -105,28 +130,34 @@ const Body = () => {
         </div>
       </div>
       <div className="w-10/12 flex flex-wrap auto-cols-min justify-center gap-2 ml-auto mr-auto">
-        {filteredRestaurant.map((restaurant) => (
-          <Link
-            to={`/restaurant/${restaurant.info.id}`}
-            className="no-underline text-black mx-0 my-auto"
-            key={restaurant.info.id}
-          >
-            {
-              /* If the restaurant has avgRating greater than 4.5 then label it as Top Rated */
-              restaurant.info.avgRating >= 4.5 ? (
-                <RestaurantCardTopRated
-                  key={restaurant.info.id}
-                  restoData={restaurant}
-                />
-              ) : (
-                <RestaurantCard
-                  key={restaurant.info.id}
-                  restoData={restaurant}
-                />
-              )
-            }
-          </Link>
-        ))}
+        {filteredRestaurant.length === 0 ? (
+          <div className="text-xl">
+            No match found for "<span className="font-bold">{searchText}</span>"
+          </div>
+        ) : (
+          filteredRestaurant.map((restaurant) => (
+            <Link
+              to={`/restaurant/${restaurant.info.id}`}
+              className="no-underline text-black mx-0 my-auto"
+              key={restaurant.info.id}
+            >
+              {
+                /* If the restaurant has avgRating greater than 4.5 then label it as Top Rated */
+                restaurant.info.avgRating >= 4.5 ? (
+                  <RestaurantCardTopRated
+                    key={restaurant.info.id}
+                    restoData={restaurant}
+                  />
+                ) : (
+                  <RestaurantCard
+                    key={restaurant.info.id}
+                    restoData={restaurant}
+                  />
+                )
+              }
+            </Link>
+          ))
+        )}
       </div>
     </div>
   );
