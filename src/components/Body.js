@@ -40,8 +40,6 @@ const Body = () => {
     setFilteredRestaurant(filteredRestaurant);
   };
 
-  console.log("filteredRestaurant", filteredRestaurant);
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -75,11 +73,11 @@ const Body = () => {
     <div className="ml-auto mr-auto">
       <div className="w-10/12 flex justify-center max-mobile:justify-between ml-auto mr-auto max-mobile:w-full max-tablet:w-full">
         <div className="m-4 flex items-center input-main">
-          <div class="max-w-md mx-auto">
-            <div class="relative">
-              <div class="absolute inset-y-0 start-0 flex items-center ps-3">
+          <div className="max-w-md mx-auto">
+            <div className="relative">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3">
                 <svg
-                  class="w-4 h-4 text-gray-500"
+                  className="w-4 h-4 text-gray-500"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -97,13 +95,13 @@ const Body = () => {
               <input
                 type="text"
                 id="default-search"
-                class="block w-[24rem] max-mobile:w-[11rem] max-tablet:w-[20rem] max-laptop:w-[20rem] p-4 ps-10 text-md text-gray-800 border-0 focus:outline-none shadow-custom rounded-lg bg-[#fff]"
+                className="block w-[24rem] max-mobile:w-[11rem] max-tablet:w-[20rem] max-laptop:w-[20rem] p-4 ps-10 text-md text-gray-800 border-0 focus:outline-none shadow-custom rounded-lg bg-[#fff]"
                 placeholder="Pizza, Burger, Biryani..."
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
               />
               <button
-                class="text-black font-bold absolute end-[1rem] bottom-2.5 mobile:bottom-[0.4rem] bg-green-200 border-solid border-green-300 cursor-pointer hover:bg-green-300 hover:border-green-500 rounded-lg text-md px-4 py-2 max-mobile:px-2  max-mobile:py-1"
+                className="text-black font-bold absolute end-[1rem] bottom-2.5 mobile:bottom-[0.4rem] bg-green-200 border-solid border-green-300 cursor-pointer hover:bg-green-300 hover:border-green-500 rounded-lg text-md px-4 py-2 max-mobile:px-2  max-mobile:py-1"
                 onClick={filterRestaurantCard}
               >
                 Search
@@ -129,7 +127,7 @@ const Body = () => {
           )}
         </div>
       </div>
-      <div className="w-10/12 flex flex-wrap auto-cols-min justify-center gap-2 ml-auto mr-auto">
+      <div className="w-10/12 max-tablet:w-full max-desktop:w-10/12 lg_desktop:w-9/12 flex flex-wrap auto-cols-min justify-center gap-2 ml-auto mr-auto">
         {filteredRestaurant.length === 0 ? (
           <div className="text-xl">
             No match found for "<span className="font-bold">{searchText}</span>"

@@ -21,14 +21,19 @@ module.exports = {
     },
     screens: {
       mobile: "680px",
-      tablet: "1030px",
-      // => @media (min-width: 640px) { ... }
+      // => @media (min-width: 680px) { ... }
+
+      tablet: "1134px",
+      // => @media (min-width: 1030px) { ... }
 
       laptop: "1474px",
-      // => @media (min-width: 1024px) { ... }
+      // => @media (min-width: 1474px) { ... }
 
       desktop: "1880px",
-      // => @media (min-width: 1280px) { ... }
+      // => @media (min-width: 1880px) { ... }
+
+      lg_desktop: "2100px",
+      // => @media (min-width: 1880px) { ... }
     },
   },
   plugins: [],
