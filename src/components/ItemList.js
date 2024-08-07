@@ -130,14 +130,14 @@ const ItemList = ({ items }) => {
                     <div className="flex justify-between">
                       <button
                         onClick={handleDecrementBtn}
-                        className="border-none text-green-500 bg-white font-bold text-xl"
+                        className="border-none text-green-500 bg-white font-bold text-xl max-mobile:text-base max-mobile:ml-[4px]"
                       >
                         -
                       </button>
                       <span>{counter}</span>
                       <button
                         onClick={handlncrementBtn}
-                        className="border-none text-green-500 bg-white font-bold text-xl"
+                        className="border-none text-green-500 bg-white font-bold text-xl max-mobile:text-base max-mobile:mr-[4px]"
                       >
                         +
                       </button>
