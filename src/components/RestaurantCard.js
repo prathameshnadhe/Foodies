@@ -2,6 +2,7 @@ import { useState } from "react";
 import { RESTOCOVERIMG } from "../utils/constants";
 import bike from "../utils/svgs/delivery-bike.svg";
 import placeHolderImg from "../utils/images/placeholder-light.avif";
+import starImg from "./../utils/images/star.png";
 
 const RestaurantCard = (props) => {
   const { restoData } = props;
@@ -15,41 +16,47 @@ const RestaurantCard = (props) => {
     setImgSrc(placeHolderImg);
   };
 
+  const getDeliveryTimeRange = (time) => {
+    if (!time) return ""; // Handle undefined or null time
+    const lowerBound = Math.floor(time / 5) * 5;
+    const upperBound = lowerBound + 5;
+    return `${lowerBound}-${upperBound} mins`;
+  };
+
   return (
-    <div className="bg-[#fff] w-[18rem] h-[28rem] rounded-[1rem] p-1 m-1 shadow-custom hover:shadow-customHover hover:bg-[#f5f5f5]">
-      {cloudinaryImageId ? (
-        <img
-          className="h-[12rem] w-[18rem] rounded-[1rem] object-cover"
-          src={imgSrc}
-          alt="resto-logo"
-          onError={handleError}
-        />
-      ) : (
-        <img
-          className="h-[12rem] w-[18rem] rounded-[1rem] object-cover"
-          src={placeHolderImg}
-          alt="resto-logo"
-        />
-      )}
+    <div className="bg-[#fff] w-[18rem] h-[21rem] rounded-[1rem] p-1 m-1 hover:ease-in-out hover:scale-90 hover:transform hover:transition-transform hover:duration-300 max-mobile:flex max-mobile:w-[25rem] max-mobile:h-[9rem]">
+      <div>
+        {cloudinaryImageId ? (
+          <img
+            className="h-[12rem] w-[18rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem]"
+            src={imgSrc}
+            alt="resto-logo"
+            onError={handleError}
+          />
+        ) : (
+          <img
+            className="h-[12rem] w-[18rem] rounded-[1rem] object-cover"
+            src={placeHolderImg}
+            alt="resto-logo"
+          />
+        )}
+      </div>
       <div className="ml-3">
-        <h3>{name}</h3>
-        <h4 className="font-medium">
+        <div className="text-[1.2rem] font-bold text-black mt-[1rem]">
+          {name}
+        </div>
+        <div className="flex items-center text-lg text-gray-700 mt-1">
+          <span className="flex items-center mr-2">
+            {starImg && <img src={starImg} className="w-4 h-4 mr-1" />}{" "}
+            {avgRating}
+          </span>
+          <span className="mr-2">•</span>
+          <span>{getDeliveryTimeRange(sla?.deliveryTime)}</span>
+        </div>
+        <div className="text-gray-600 text-lg ">
           {cuisines.length <= 4
             ? cuisines.join(", ")
             : cuisines.slice(0, 4).join(", ") + " ..."}
-        </h4>
-        <h4 className="font-medium">⭐ {avgRating} stars</h4>
-        <h4 className="font-medium">
-          {"\u00A0"}
-          <span className="text-green-800">₹</span>
-          {"\u00A0"}
-          {costForTwo.slice(1)}
-        </h4>
-        <div className="font-medium flex items-center">
-          <svg className="h-6 w-6 mr-2">
-            <use xlinkHref={`${bike}#delivery-bike`}></use>
-          </svg>
-          <span>{sla?.deliveryTime} minutes</span>
         </div>
       </div>
     </div>

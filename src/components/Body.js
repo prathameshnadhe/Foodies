@@ -112,14 +112,14 @@ const Body = () => {
         <div className="flex items-center input-padding">
           {allRestaurantsBtn ? (
             <button
-              className="px-4 py-2 bg-green-100 rounded-lg font-bold border-solid border-green-300 hover:bg-green-300 hover:border-green-500 cursor-pointer max-mobile:px-2 max-mobile:py-1"
+              className="px-4 py-2 bg-green-100 text-black rounded-lg font-bold border-solid border-green-300 hover:bg-green-300 hover:border-green-500 cursor-pointer max-mobile:px-2 max-mobile:py-1 "
               onClick={topRatedRestaurants}
             >
               Top Rated Restaurants
             </button>
           ) : (
             <button
-              className="px-4 py-2 bg-green-100 rounded-lg font-bold border-solid border-green-300 hover:bg-green-300 hover:border-green-500 cursor-pointer"
+              className="px-4 py-2 bg-green-100 text-black rounded-lg font-bold border-solid border-green-300 hover:bg-green-300 hover:border-green-500 cursor-pointer"
               onClick={allRestaurants}
             >
               All Restaurants
@@ -127,7 +127,7 @@ const Body = () => {
           )}
         </div>
       </div>
-      <div className="w-10/12 max-tablet:w-full max-desktop:w-10/12 lg_desktop:w-9/12 flex flex-wrap auto-cols-min justify-center gap-2 ml-auto mr-auto">
+      <div className="w-10/12 max-tablet:w-full max-desktop:w-10/12 lg_desktop:w-9/12 grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 gap-y-3 mx-auto my-0 max-mobile:mt-[1rem]">
         {filteredRestaurant.length === 0 ? (
           <div className="text-xl">
             No match found for "<span className="font-bold">{searchText}</span>"
@@ -136,7 +136,7 @@ const Body = () => {
           filteredRestaurant.map((restaurant) => (
             <Link
               to={`/restaurant/${restaurant.info.id}`}
-              className="no-underline text-black mx-0 my-auto"
+              className="no-underline text-black mx-auto my-0 "
               key={restaurant.info.id}
             >
               {
