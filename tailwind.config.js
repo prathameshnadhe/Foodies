@@ -26,16 +26,16 @@ module.exports = {
       mobile: "680px",
       // => @media (min-width: 680px) { ... }
 
-      tablet: "1134px",
-      // => @media (min-width: 1030px) { ... }
+      tablet: "1220px",
+      // => @media (min-width: 1220px) { ... }
 
-      laptop: "1474px",
-      // => @media (min-width: 1474px) { ... }
+      laptop: "1570px",
+      // => @media (min-width: 1570px) { ... }
 
-      desktop: "1880px",
-      // => @media (min-width: 1880px) { ... }
+      desktop: "1960px",
+      // => @media (min-width: 1960px) { ... }
 
-      lg_desktop: "2100px",
+      lg_desktop: "2200px",
       // => @media (min-width: 1880px) { ... }
     },
   },
