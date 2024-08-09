@@ -24,26 +24,28 @@ const RestaurantCard = (props) => {
   };
 
   return (
-    <div className="bg-[#fff] w-[18rem] h-[21rem] rounded-[1rem] p-1 m-1 hover:transition-all duration-500 hover:m-[-1rem] hover:transform hover:duration-300 max-mobile:flex max-mobile:w-[22rem] max-mobile:h-[9rem]">
+    <div className="bg-[#fff]  h-[18rem] rounded-[1rem] p-1 m-1 hover:transition-all duration-500 hover:m-[-1rem] hover:transform hover:duration-300 max-mobile:flex max-mobile:w-[22rem] max-mobile:h-[9rem] mx-auto my-0">
       <div>
         {cloudinaryImageId ? (
           <img
-            className="h-[13rem] w-[18rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem]"
+            className="h-[11rem] w-[16rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem]"
             src={imgSrc}
             alt="resto-logo"
             onError={handleError}
           />
         ) : (
           <img
-            className="h-[12rem] w-[18rem] rounded-[1rem] object-cover"
+            className="h-[11rem] w-[16rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem]"
             src={placeHolderImg}
             alt="resto-logo"
           />
         )}
       </div>
       <div className="ml-3">
-        <div className="text-xl font-bold text-black mt-[1rem] opacity-[0.8]">{name}</div>
-        <div className="flex items-center text-base text-gray-700 mt-1">
+        <div className="text-l font-bold text-black mt-[1rem] opacity-[0.8]">
+          {name}
+        </div>
+        <div className="flex items-center text-sm text-gray-700 mt-1">
           <span className="flex items-center mr-2">
             {starImg && <img src={starImg} className="w-4 h-4 mr-1" />}{" "}
             {avgRating}
@@ -54,9 +56,9 @@ const RestaurantCard = (props) => {
           <span className="max-mobile:hidden">{costForTwo}</span>
         </div>
         <div className="text-gray-600 text-base max-mobile:text-sm">
-          {cuisines.length <= 4
+          {cuisines.length <= 3
             ? cuisines.join(", ")
-            : cuisines.slice(0, 4).join(", ")}
+            : cuisines.slice(0, 2).join(", ")}
         </div>
       </div>
     </div>

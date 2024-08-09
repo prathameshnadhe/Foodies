@@ -127,7 +127,7 @@ const Body = () => {
           )}
         </div>
       </div>
-      <div className="w-10/12 max-tablet:w-full max-desktop:w-10/12 lg_desktop:w-9/12 grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 lg_desktop:grid-cols-6 gap-y-3 mx-auto my-0 mt-4">
+      <div className="w-10/12 max-tablet:w-full max-desktop:w-9/12 lg_desktop:w-9/12 grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 lg_desktop:grid-cols-6 gap-y-3 mx-auto my-0 mt-4">
         {filteredRestaurant.length === 0 ? (
           <div className="text-xl">
             No match found for "<span className="font-bold">{searchText}</span>"

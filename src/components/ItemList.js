@@ -51,7 +51,7 @@ const ItemList = ({ items }) => {
 
         return (
           <div key={item.card?.info?.id}>
-            <div className="p-2 m-2 border-b-4 text-left flex justify-between">
+            <div className="p-2 m-2 pb-0  border-b-4 text-left flex justify-between">
               <div>
                 <div className=" p-2 m-2 pb-0 text-xl font-bold text-gray-800 max-mobile:text-base">
                   <div className="flex items-center">
@@ -96,7 +96,7 @@ const ItemList = ({ items }) => {
                     </div>
                   )}
                 </div>
-                <p className="text-[1rem] text-gray-800 opacity-[0.9] font-medium p-2 m-2 pt-0 max-mobile:text-sm">
+                <p className="text-[1rem] text-gray-800 opacity-[0.9] font-medium p-2 m-2 mt-0 pt-0 max-mobile:text-sm">
                   <span>
                     {isExpanded ? item?.card?.info?.description : shortText}
                   </span>
@@ -111,22 +111,22 @@ const ItemList = ({ items }) => {
                   )}
                 </p>
               </div>
-              <div>
+              <div className="mb-5">
                 <img
                   src={imgSrc}
                   alt={item?.card?.info?.name}
-                  className="w-[200px] h-[200px] object-cover rounded-lg max-mobile:w-[140px] max-mobile:h-[140px] max-mobile:mt-[2rem] "
+                  className="w-[200px] h-[200px] object-cover rounded-xl max-mobile:w-[140px] max-mobile:h-[140px] max-mobile:mt-[2rem] mobile:w-[160px] mobile:h-[160px] mt-[1rem]"
                   onError={handleError}
                 />
                 {addBtn ? (
                   <button
-                    className="absolute bg-white text-xl text-green-500 ml-[-10.2rem] m-[11rem] px-4 py-2 w-[8rem] rounded-lg font-bold border-none shadow-md max-mobile:ml-[-7.6rem] max-mobile:m-[9.8rem] max-mobile:text-base max-mobile:px-1 max-mobile:py-[6px] max-mobile:w-[6.5rem]"
+                    className="absolute bg-white text-xl text-green-500 ml-[-9rem] m-[10rem] px-4 py-2 w-[8rem] rounded-lg font-bold border-none shadow-md max-mobile:ml-[-7.6rem] max-mobile:m-[9.8rem] max-mobile:text-base max-mobile:px-1 max-mobile:py-[6px] max-mobile:w-[6.5rem]"
                     onClick={handleAddBtn}
                   >
                     ADD
                   </button>
                 ) : (
-                  <button className="absolute bg-white text-xl text-green-500 ml-[-10.2rem] m-[11rem] px-4 py-2 w-[8rem] rounded-lg font-bold border-none shadow-md max-mobile:ml-[-7.6rem] max-mobile:m-[9.8rem] max-mobile:text-base max-mobile:px-1 max-mobile:py-[6px] max-mobile:w-[6.5rem]">
+                  <button className="absolute bg-white text-xl text-green-500 ml-[-9rem] m-[10rem] px-4 py-2 w-[8rem] rounded-lg font-bold border-none shadow-md max-mobile:ml-[-7.6rem] max-mobile:m-[9.8rem] max-mobile:text-base max-mobile:px-1 max-mobile:py-[6px] max-mobile:w-[6.5rem]">
                     <div className="flex justify-between">
                       <button
                         onClick={handleDecrementBtn}
