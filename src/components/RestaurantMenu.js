@@ -37,7 +37,7 @@ const RestaurantMenu = () => {
   return categories && categories.length === 0 ? (
     <RestoShimmer />
   ) : (
-    <div className="mx-auto my-0 text-center w-full mobile:w-10/12 tablet:w-9/12 laptop:w-9/12 desktop:w-8/12">
+    <div className="mx-auto my-0 text-center w-full mobile:w-10/12 tablet:w-8/12 laptop:w-8/12 desktop:w-8/12">
       <h1 className="font-bold my-6 text-3xl max-mobile:text-2xl">{name}</h1>
       <p className="font-bold text-lg max-mobile:text-sm">
         {cuisines.join(", ")} - {costForTwoMessage}

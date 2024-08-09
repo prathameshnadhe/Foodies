@@ -35,8 +35,8 @@ module.exports = {
       desktop: "1880px",
       // => @media (min-width: 1880px) { ... }
 
-      lg_desktop: "2100px",
-      // => @media (min-width: 1880px) { ... }
+      lg_desktop: "2300px",
+      // => @media (min-width: 2300px) { ... }
     },
   },
   plugins: [],
