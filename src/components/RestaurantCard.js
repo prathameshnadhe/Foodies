@@ -24,7 +24,7 @@ const RestaurantCard = (props) => {
   };
 
   return (
-    <div className="bg-[#fff] w-[18rem] h-[21rem] rounded-[1rem] p-1 m-1 hover:ease-in-out hover:scale-90 hover:transform hover:transition-transform hover:duration-300 max-mobile:flex max-mobile:w-[22rem] max-mobile:h-[9rem]">
+    <div className="bg-[#fff] w-[18rem] h-[21rem] rounded-[1rem] p-1 m-1 hover:transition-all duration-500 hover:m-[-1rem] hover:transform hover:duration-300 max-mobile:flex max-mobile:w-[22rem] max-mobile:h-[9rem]">
       <div>
         {cloudinaryImageId ? (
           <img
