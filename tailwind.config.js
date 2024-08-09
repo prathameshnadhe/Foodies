@@ -29,7 +29,7 @@ module.exports = {
       tablet: "1134px",
       // => @media (min-width: 1030px) { ... }
 
-      laptop: "tailwind.config.jspx",
+      laptop: "1474px",
       // => @media (min-width: 1474px) { ... }
 
       desktop: "1880px",
