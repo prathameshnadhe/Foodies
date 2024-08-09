@@ -42,7 +42,7 @@ const RestaurantCard = (props) => {
         )}
       </div>
       <div className="ml-3">
-        <div className="text-xl font-bold text-black mt-[1rem]">{name}</div>
+        <div className="text-xl font-bold text-black mt-[1rem] opacity-[0.8]">{name}</div>
         <div className="flex items-center text-base text-gray-700 mt-1">
           <span className="flex items-center mr-2">
             {starImg && <img src={starImg} className="w-4 h-4 mr-1" />}{" "}
