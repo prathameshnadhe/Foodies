@@ -26,16 +26,16 @@ module.exports = {
       mobile: "680px",
       // => @media (min-width: 680px) { ... }
 
-      tablet: "1220px",
-      // => @media (min-width: 1220px) { ... }
+      tablet: "1134px",
+      // => @media (min-width: 1030px) { ... }
 
-      laptop: "1570px",
-      // => @media (min-width: 1570px) { ... }
+      laptop: "tailwind.config.jspx",
+      // => @media (min-width: 1474px) { ... }
 
-      desktop: "1960px",
-      // => @media (min-width: 1960px) { ... }
+      desktop: "1880px",
+      // => @media (min-width: 1880px) { ... }
 
-      lg_desktop: "2200px",
+      lg_desktop: "2100px",
       // => @media (min-width: 1880px) { ... }
     },
   },

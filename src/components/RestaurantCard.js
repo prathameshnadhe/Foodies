@@ -24,11 +24,11 @@ const RestaurantCard = (props) => {
   };
 
   return (
-    <div className="bg-[#fff] w-[20rem] h-[21rem] rounded-[1rem] p-1 m-1 hover:ease-in-out hover:scale-90 hover:transform hover:transition-transform hover:duration-300 max-mobile:flex max-mobile:w-[22rem] max-mobile:h-[9rem]">
+    <div className="bg-[#fff] w-[18rem] h-[21rem] rounded-[1rem] p-1 m-1 hover:ease-in-out hover:scale-90 hover:transform hover:transition-transform hover:duration-300 max-mobile:flex max-mobile:w-[22rem] max-mobile:h-[9rem]">
       <div>
         {cloudinaryImageId ? (
           <img
-            className="h-[13rem] w-[20em] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem]"
+            className="h-[13rem] w-[18rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem]"
             src={imgSrc}
             alt="resto-logo"
             onError={handleError}
@@ -43,7 +43,7 @@ const RestaurantCard = (props) => {
       </div>
       <div className="ml-3">
         <div className="text-xl font-bold text-black mt-[1rem]">{name}</div>
-        <div className="flex items-center text-lg text-gray-700 mt-1 max-mobile:text-base">
+        <div className="flex items-center text-base text-gray-700 mt-1">
           <span className="flex items-center mr-2">
             {starImg && <img src={starImg} className="w-4 h-4 mr-1" />}{" "}
             {avgRating}
