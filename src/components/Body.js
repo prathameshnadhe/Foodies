@@ -112,7 +112,7 @@ const Body = () => {
         <div className="flex items-center input-padding">
           {allRestaurantsBtn ? (
             <button
-              className="px-4 py-2 bg-green-100 text-black rounded-lg font-bold border-solid border-green-300 hover:bg-green-300 hover:border-green-500 cursor-pointer max-mobile:px-2 max-mobile:py-1 "
+              className="px-4 py-2 bg-green-100 text-black rounded-lg font-bold border-solid border-green-300 hover:bg-green-300 hover:border-green-500 cursor-pointer max-mobile:px-2 max-mobile:py-1 max-mobile:mr-4"
               onClick={topRatedRestaurants}
             >
               Top Rated Restaurants

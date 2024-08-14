@@ -102,10 +102,10 @@ const Header = () => {
                 onClick={closeMenu}
               >
                 <span
-                  className={`p-1 rounded-md ${
+                  className={`p-1 px-2 rounded-md ${
                     cartItems.length === 0
-                      ? "bg-gray-200 font-bold text-black border-2 border-black"
-                      : "bg-green-600 text-white"
+                      ? "font-bold text-black border border-black"
+                      : "bg-green-600 font-bold text-white border border-green-800"
                   }`}
                 >
                   {cartItems.length}

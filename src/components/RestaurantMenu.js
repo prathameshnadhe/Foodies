@@ -59,9 +59,9 @@ const RestaurantMenu = () => {
         />
       ))}
       {/* Cart Section */}
-      {cartItems.length && (
+      {cartItems.length !== 0 && (
         <Link to="/cart">
-          <div className="flex justify-between items-center text-white fixed bottom-0 left-0 right-0 font-bold bg-[#60b246] text-xl mx-auto w-full mobile:w-8/12 tablet:w-6/12 laptop:w-6/12 desktop:w-5/12">
+          <div className="flex justify-between items-center p-2 text-white fixed bottom-0 left-0 right-0 font-bold bg-[#60b246] text-xl mx-auto w-full mobile:w-8/12 tablet:w-6/12 laptop:w-6/12 desktop:w-5/12">
             <p className=" ml-2">{cartItems.length} item added</p>
             <div className="flex justify-between mr-2 items-center max-mobile:mr-4">
               <div className="mr-2">VIEW CART </div>
