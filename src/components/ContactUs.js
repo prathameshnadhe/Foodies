@@ -5,13 +5,14 @@ const ContactUs = () => {
 
   if (onlineStatus === false) {
     return (
-      <h1 style={{ textAlign: "center" }}>
+      <h1 className="text-center">
         Looks like you'are offline!! Please check your internet connection;
       </h1>
     );
   }
+
   return (
-    <div className="other-components">
+    <div className="text-center">
       <h1>Contact Us Page</h1>
       <h3>This is my food delivery app project with Swiggies live API data.</h3>
     </div>

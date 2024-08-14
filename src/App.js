@@ -8,6 +8,8 @@ import Cart from "./components/Cart";
 import Error from "./components/Error/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 // Chunking
 // Code Splitting
@@ -19,11 +21,10 @@ const Grocery = lazy(() => import("./components/Grocery/Grocery"));
 
 const AboutUs = lazy(() => import("./components/AboutUs"));
 
-
 const AppLayout = () => {
-  // authentication
+  // authentication (example for Context)
   const [userName, setUserName] = useState("");
-  
+
   useEffect(() => {
     // Make an API call and send username and password
     const data = {
@@ -31,14 +32,16 @@ const AppLayout = () => {
     };
     setUserName(data.name);
   });
-  
+
   return (
-    <UserContext.Provider value={{ loggedInUser: userName }}>
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 

@@ -40,7 +40,7 @@ const AboutUs = () => {
   }
 
   return (
-    <div className="other-components">
+    <div className="text-center">
       <h1>About Us Page</h1>
       <h3>This is my food delivery app project with Swiggies live API data.</h3>
     </div>

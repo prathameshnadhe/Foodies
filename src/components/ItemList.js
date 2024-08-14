@@ -5,6 +5,8 @@ import vegImg from "./../utils/images/veg.png";
 import nonVegImg from "./../utils/images/non_veg.png";
 import starImg from "./../utils/images/star.png";
 import { useMediaQuery } from "@react-hook/media-query";
+import { useDispatch } from "react-redux";
+import { addItem, removeItem } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
   return (
@@ -19,17 +21,23 @@ const ItemList = ({ items }) => {
         const [counter, setCounter] = useState(1);
         const [isExpanded, setIsExpanded] = useState(false);
         const isMobile = useMediaQuery("(max-width: 680px)");
+        const dispatch = useDispatch();
 
-        const handleAddBtn = () => {
+        const handleAddBtn = (item) => {
+          // dispatch an action
+          dispatch(addItem(item));
+
           setAddBtn(false);
           setCounter(1);
         };
 
-        const handlncrementBtn = () => {
+        const handlncrementBtn = (item) => {
+          dispatch(addItem(item));
           setCounter(counter + 1);
         };
 
         const handleDecrementBtn = () => {
+          dispatch(removeItem());
           setCounter(counter - 1);
           if (counter === 1) {
             setAddBtn(true);
@@ -121,7 +129,7 @@ const ItemList = ({ items }) => {
                 {addBtn ? (
                   <button
                     className="absolute bg-white text-xl text-green-500 ml-[-9rem] m-[10rem] px-4 py-2 w-[8rem] rounded-lg font-bold border-none shadow-md max-mobile:ml-[-7.6rem] max-mobile:m-[9.8rem] max-mobile:text-base max-mobile:px-1 max-mobile:py-[6px] max-mobile:w-[6.5rem]"
-                    onClick={handleAddBtn}
+                    onClick={() => handleAddBtn(item)}
                   >
                     ADD
                   </button>
@@ -136,7 +144,7 @@ const ItemList = ({ items }) => {
                       </button>
                       <span>{counter}</span>
                       <button
-                        onClick={handlncrementBtn}
+                        onClick={() => handlncrementBtn(item)}
                         className="border-none text-green-500 bg-white font-bold text-xl max-mobile:text-base max-mobile:mr-[4px]"
                       >
                         +

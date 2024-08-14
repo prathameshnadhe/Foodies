@@ -2,11 +2,15 @@ import { Link } from "react-router-dom";
 import logo from "./../utils/images/Foodies.jpg";
 import { useState, useContext } from "react";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { loggedInUser } = useContext(UserContext);
+
+  // Subscribing to the store using Selector
+  const cartItems = useSelector((store) => store.cart.items);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,7 +24,9 @@ const Header = () => {
     <nav className="bg-[#fff] shadow-md">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 my-4 tablet:ml-[3rem] tablet:mr-[3rem]">
         <div className="h-20">
-          <img className="h-20" src={logo} alt="header_img" />
+          <Link to="/">
+            <img className="h-20" src={logo} alt="header_img" />
+          </Link>
         </div>
         <button
           onClick={toggleMenu}
@@ -92,10 +98,10 @@ const Header = () => {
             <li>
               <Link
                 to="/cart"
-                className="block py-2 px-3 no-underline text-black text-2xl hover:text-orange-600 rounded tablet:bg-transparent tablet:p-0"
+                className="block py-2 px-3 font-bold no-underline text-black text-2xl hover:text-orange-600 rounded tablet:bg-transparent tablet:p-0"
                 onClick={closeMenu}
               >
-                Cart
+                Cart ({cartItems.length} items)
               </Link>
             </li>
             {btnName === "Logout" && (
