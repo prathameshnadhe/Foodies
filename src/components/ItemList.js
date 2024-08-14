@@ -136,19 +136,19 @@ const ItemList = ({ items }) => {
                 ) : (
                   <button className="absolute bg-white text-xl text-green-500 ml-[-9rem] m-[10rem] px-4 py-2 w-[8rem] rounded-lg font-bold border-none shadow-md max-mobile:ml-[-7.6rem] max-mobile:m-[9.8rem] max-mobile:text-base max-mobile:px-1 max-mobile:py-[6px] max-mobile:w-[6.5rem]">
                     <div className="flex justify-between">
-                      <button
+                      <div
                         onClick={handleDecrementBtn}
                         className="border-none text-green-500 bg-white font-bold text-xl max-mobile:text-base max-mobile:ml-[4px]"
                       >
                         -
-                      </button>
+                      </div>
                       <span>{counter}</span>
-                      <button
+                      <div
                         onClick={() => handlncrementBtn(item)}
                         className="border-none text-green-500 bg-white font-bold text-xl max-mobile:text-base max-mobile:mr-[4px]"
                       >
                         +
-                      </button>
+                      </div>
                     </div>
                   </button>
                 )}
@@ -160,6 +160,7 @@ const ItemList = ({ items }) => {
           </div>
         );
       })}
+      
     </div>
   );
 };

@@ -89,7 +89,7 @@ const Header = () => {
             <li>
               <Link
                 to="/grocery"
-                className="block py-2 px-3 no-underline text-black text-2xl hover:text-orange-600 rounded tablet:bg-transparent tablet:p-0"
+                className="block py-2  px-3 no-underline text-black text-2xl hover:text-orange-600 rounded tablet:bg-transparent tablet:p-0"
                 onClick={closeMenu}
               >
                 Grocery
@@ -98,10 +98,19 @@ const Header = () => {
             <li>
               <Link
                 to="/cart"
-                className="block py-2 px-3 font-bold no-underline text-black text-2xl hover:text-orange-600 rounded tablet:bg-transparent tablet:p-0"
+                className="block py-2 px-3 no-underline text-black text-2xl hover:text-orange-600 rounded tablet:bg-transparent tablet:p-0"
                 onClick={closeMenu}
               >
-                Cart ({cartItems.length} items)
+                <span
+                  className={`p-1 rounded-md ${
+                    cartItems.length === 0
+                      ? "bg-gray-200 font-bold text-black border-2 border-black"
+                      : "bg-green-600 text-white"
+                  }`}
+                >
+                  {cartItems.length}
+                </span>{" "}
+                Cart
               </Link>
             </li>
             {btnName === "Logout" && (
@@ -113,7 +122,6 @@ const Header = () => {
               className="block py-2 px-3 no-underline text-black text-2xl hover:text-orange-600 rounded tablet:bg-transparent tablet:p-0 cursor-pointer"
               onClick={() => {
                 setBtnName(btnName === "Login" ? "Logout" : "Login");
-                closeMenu();
               }}
             >
               {btnName}

@@ -19,13 +19,24 @@ const Cart = () => {
     }));
   };
 
+  // useEffect(() => {
+  //   const newSubtotal = cartItems.reduce((acc, item) => {
+  //     const itemTotal =
+  //       itemTotals[item.card?.info?.id] ||
+  //       (item.card?.info?.defaultPrice || item.card?.info?.price) / 100;
+  //     return acc + itemTotal;
+  //   }, 0);
+  //   setSubtotal(newSubtotal);
+  //   console.log(itemTotals, cartItems);
+  // }, [itemTotals, cartItems]);
+
   useEffect(() => {
+    // Calculate new subtotal based on itemTotals
     const newSubtotal = cartItems.reduce((acc, item) => {
-      const itemTotal =
-        itemTotals[item.card?.info?.id] ||
-        (item.card?.info?.defaultPrice || item.card?.info?.price) / 100;
+      const itemTotal = itemTotals[item.card?.info?.id] || 0;
       return acc + itemTotal;
     }, 0);
+
     setSubtotal(newSubtotal);
   }, [itemTotals, cartItems]);
 
@@ -69,7 +80,7 @@ const Cart = () => {
             <p>Order total</p>
             <p>₹ {(subtotal + deliveryCharges + taxes).toFixed(2)}</p>
           </div>
-          <button className="bg-green-600 text-white font-bold text-xl w-full py-3 rounded-lg hover:bg-green-700">
+          <button className="bg-green-600 text-white border-green-900 font-bold text-xl w-full py-3 rounded-lg hover:bg-green-700">
             Checkout
           </button>
         </div>

@@ -17,7 +17,7 @@ const RestaurantCategory = ({
   return (
     <div>
       {/* Header */}
-      <div className="mx-auto my-4 bg-[#fff] w-full mobile:w-10/12 tablet:w-8/12 laptop:w-8/12 desktop:w-7/12">
+      <div className="mx-auto my-4 bg-[#fff]">
         <div
           className="flex justify-between cursor-pointer bg-gray-50 p-4 mt-2 shadow-md rounded-md"
           onClick={handleClick}
