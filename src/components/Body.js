@@ -95,13 +95,13 @@ const Body = () => {
               <input
                 type="text"
                 id="default-search"
-                className="block w-[24rem] max-mobile:w-[11rem] max-tablet:w-[20rem] max-laptop:w-[20rem] p-4 ps-10 text-md text-gray-800 border-0 focus:outline-none shadow-custom rounded-lg bg-[#fff]"
+                className="block w-[24rem] max-mobile:w-[14rem] max-tablet:w-[20rem] max-laptop:w-[20rem] p-4 ps-10 text-md text-gray-800 border-0 focus:outline-none shadow-custom rounded-lg bg-[#fff]"
                 placeholder="Pizza, Burger, Biryani..."
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
               />
               <button
-                className="text-black font-bold absolute end-[1rem] bottom-2.5 mobile:bottom-[0.4rem] bg-green-200 border-solid border-green-300 cursor-pointer hover:bg-green-300 hover:border-green-500 rounded-lg text-md px-4 py-2 max-mobile:px-2  max-mobile:py-1"
+                className="text-black font-bold absolute end-[1rem] bottom-2.5 mobile:bottom-[0.4rem] bg-green-200 border-solid border-green-300 cursor-pointer hover:bg-green-400 hover:border-green-500 rounded-lg text-md px-4 py-2 max-mobile:px-2  max-mobile:py-1 opacity-[0.9]"
                 onClick={filterRestaurantCard}
               >
                 Search
@@ -112,14 +112,14 @@ const Body = () => {
         <div className="flex items-center input-padding">
           {allRestaurantsBtn ? (
             <button
-              className="px-4 py-2 bg-green-100 text-black rounded-lg font-bold border-solid border-green-300 hover:bg-green-300 hover:border-green-500 cursor-pointer max-mobile:px-2 max-mobile:py-1 max-mobile:mr-4"
+              className="px-4 py-2 bg-green-200 text-black rounded-lg font-bold border-1 border-green-800 hover:bg-green-400 hover:border-green-500 cursor-pointer max-mobile:px-2 max-mobile:py-1 max-mobile:mr-4 opacity-[0.9]"
               onClick={topRatedRestaurants}
             >
               Top Rated Restaurants
             </button>
           ) : (
             <button
-              className="px-4 py-2 bg-green-100 text-black rounded-lg font-bold border-solid border-green-300 hover:bg-green-300 hover:border-green-500 cursor-pointer"
+              className="px-4 py-2 bg-green-200 text-black rounded-lg font-bold border-1 border-green-800 hover:bg-green-400 hover:border-green-500 cursor-pointer max-mobile:px-2 max-mobile:py-1 max-mobile:mr-4 opacity-[0.9]"
               onClick={allRestaurants}
             >
               All Restaurants
@@ -128,12 +128,12 @@ const Body = () => {
         </div>
       </div>
       <div className="w-10/12 max-tablet:w-full max-desktop:w-9/12 lg_desktop:w-9/12 grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 lg_desktop:grid-cols-6 gap-y-3 mx-auto my-0 mt-4">
-        {filteredRestaurant.length === 0 ? (
+        {filteredRestaurant?.length === 0 ? (
           <div className="text-xl">
             No match found for "<span className="font-bold">{searchText}</span>"
           </div>
         ) : (
-          filteredRestaurant.map((restaurant) => (
+          filteredRestaurant?.map((restaurant) => (
             <Link
               to={`/restaurant/${restaurant.info.id}`}
               className="no-underline text-black mx-auto my-0 "

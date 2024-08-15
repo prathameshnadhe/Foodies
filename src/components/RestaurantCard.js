@@ -28,14 +28,14 @@ const RestaurantCard = (props) => {
       <div>
         {cloudinaryImageId ? (
           <img
-            className="h-[11rem] w-[16rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem]"
+            className="h-[11rem] w-[16rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem] max-w-none"
             src={imgSrc}
             alt="resto-logo"
             onError={handleError}
           />
         ) : (
           <img
-            className="h-[11rem] w-[16rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem]"
+            className="h-[11rem] w-[16rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem] max-w-none"
             src={placeHolderImg}
             alt="resto-logo"
           />
@@ -73,7 +73,7 @@ export const withTopRated = (RestaurantCard) => {
   return (props) => {
     return (
       <div>
-        <label className="absolute bg-green-200 text-black m-3 p-2 rounded-lg">
+        <label className="absolute bg-green-200 text-black m-3 p-2 rounded-lg max-mobile:m-2 max-mobile:p-1 max-mobile:text-sm">
           Top Rated
         </label>
         <RestaurantCard {...props} />

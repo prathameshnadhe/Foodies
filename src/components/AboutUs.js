@@ -33,7 +33,7 @@ const AboutUs = () => {
 
   if (onlineStatus === false) {
     return (
-      <h1 style={{ textAlign: "center" }}>
+      <h1 className="text-center text-2xl mt-8">
         Looks like you'are offline!! Please check your internet connection;
       </h1>
     );
@@ -41,8 +41,12 @@ const AboutUs = () => {
 
   return (
     <div className="text-center">
-      <h1>About Us Page</h1>
-      <h3>This is my food delivery app project with Swiggies live API data.</h3>
+      <h1 className="text-3xl font-bold mb-4 mt-8 opacity-[0.9]">
+        About Us Page
+      </h1>
+      <h3 className="text-lg">
+        This is my food delivery app project with Swiggies live API data.
+      </h3>
     </div>
   );
 };

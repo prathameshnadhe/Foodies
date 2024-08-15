@@ -13,12 +13,12 @@ const RestoShimmer = () => {
   }, []);
 
   return (
-    <div className="mx-auto my-0">
-      <div className="w-[20rem] h-10 rounded-lg  mt-8 bg-[#fff] shadow-custom mx-auto my-0 max-tablet:w-[12rem]"></div>
-      <div className="w-[26rem] h-8 rounded-lg bg-[#fff] mt-4 shadow-custom mx-auto my-0 max-tablet:w-[15rem] max-tablet:mt-2"></div>
-      <div className="w-6/12 h-10 rounded-lg bg-[#fff] mt-6 shadow-custom max-tablet:w-10/12 max-tablet:mt-2 mx-auto my-0"></div>
-      <div className="flex flex-wrap auto-cols-min gap-x-[3rem] gap-y-[2rem] justify-centeranimate-shimmer">
-        <div className="w-6/12 h-[14rem] mt-4 bg-[#fff] shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0">
+    <div className="mx-auto bg-[#fff] my-0">
+      <div className="w-[20rem] h-10 rounded-lg  mt-8 shadow-custom mx-auto my-0 max-tablet:w-[12rem] animate-shimmer"></div>
+      <div className="w-[26rem] h-8 rounded-lg  mt-4 shadow-custom mx-auto my-0 max-tablet:w-[15rem] max-tablet:mt-2 animate-shimmer"></div>
+      <div className="w-6/12 h-10 rounded-lg  mt-6 shadow-custom max-tablet:w-10/12 max-tablet:mt-2 mx-auto my-0 animate-shimmer"></div>
+      <div className="flex flex-wrap auto-cols-min gap-x-[3rem] gap-y-[2rem] justify-center">
+        <div className="w-6/12 h-[14rem] mt-4  shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0 animate-shimmer">
           {showContent && (
             <p className=" overflow-hidden text-center text-xl p-8 bg-[#b8b8b8] rounded-[1rem] max-tablet:p-2">
               We retrieve data from Swiggy's live API. To facilitate this, we
@@ -28,13 +28,12 @@ const RestoShimmer = () => {
             </p>
           )}
         </div>
-        <div className="w-6/12 h-[14rem] bg-[#fff] shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0"></div>
-        <div className="w-6/12 h-[14rem] bg-[#fff] shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0"></div>
-        <div className="w-6/12 h-[14rem] bg-[#fff] shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0"></div>
-        <div className="w-6/12 h-[14rem] bg-[#fff] shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0"></div>
-        <div className="w-6/12 h-[14rem] bg-[#fff] shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0"></div>
-      </div>{" "}
-      mx-auto my-0
+        <div className="w-6/12 h-[14rem]  shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0 animate-shimmer"></div>
+        <div className="w-6/12 h-[14rem]  shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0 animate-shimmer"></div>
+        <div className="w-6/12 h-[14rem]  shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0 animate-shimmer"></div>
+        <div className="w-6/12 h-[14rem]  shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0 animate-shimmer"></div>
+        <div className="w-6/12 h-[14rem]  shadow-custom rounded-2xl max-tablet:w-10/12 mx-auto my-0 animate-shimmer"></div>
+      </div>
     </div>
   );
 };

@@ -40,7 +40,7 @@ const RestaurantMenu = () => {
     );
   }
 
-  return categories && categories.length === 0 ? (
+  return categories && categories.length !== 0 ? (
     <RestoShimmer />
   ) : (
     <div className="mx-auto my-0 text-center w-full mobile:w-8/12 tablet:w-6/12 laptop:w-6/12 desktop:w-5/12">

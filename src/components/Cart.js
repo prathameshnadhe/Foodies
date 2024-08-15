@@ -35,29 +35,6 @@ const Cart = () => {
     setSubtotal(newSubtotal);
   }, [itemTotals, cartItems]);
 
-  if (cartItems.length === 0) {
-    return (
-      <div className="text-center m-4 p-4 bg-[#fff] mt-20 ">
-        <img
-          src={cartEmptyImg}
-          className="mx-auto my-0 w-[17rem] h-[16rem]"
-          alt=""
-        />
-        <p className="text-2xl font-bold mb-2 mt-5 opacity-[0.8]">
-          Your cart is empty
-        </p>
-        <p className="text-base font-semibold mb-2 opacity-[0.8]">
-          You can go to the home page to view more restaurants
-        </p>
-        <Link to="/">
-          <p className="bg-orange-600 w-[18rem] mt-6 mx-auto my-0 p-2 px-6 text-white font-bold uppercase">
-            See restaurants near you
-          </p>
-        </Link>
-      </div>
-    );
-  }
-
   const handleMouseEnter = () => {
     setShowTooltip(true);
   };
@@ -69,6 +46,29 @@ const Cart = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="text-center m-4 p-4 bg-[#fff] mt-20 ">
+        <img
+          src={cartEmptyImg}
+          className="mx-auto my-0 w-[17rem] h-[16rem]"
+          alt=""
+        />
+        <p className="text-2xl font-bold mb-2 mt-5 opacity-[0.8]">
+          Good food is always cooking
+        </p>
+        <p className="text-base font-semibold mb-2 opacity-[0.8]">
+          No orders yet! Discover more restaurants on the home page.
+        </p>
+        <Link to="/">
+          <p className="bg-orange-600 w-[18rem] mt-6 mx-auto my-0 p-2 px-6 text-white font-bold uppercase">
+            See restaurants near you
+          </p>
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto my-0 p-8 w-9/12 max-tablet:p-4 max-laptop:w-full">

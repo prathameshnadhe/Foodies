@@ -102,7 +102,7 @@ const Header = () => {
                 onClick={closeMenu}
               >
                 <span
-                  className={`p-1 px-2 rounded-md ${
+                  className={`px-1 rounded-md ${
                     cartItems.length === 0
                       ? "font-bold text-black border border-black"
                       : "bg-green-600 font-bold text-white border border-green-800"
