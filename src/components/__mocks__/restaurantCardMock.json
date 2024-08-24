@@ -1,0 +1,70 @@
+{
+    "info": {
+        "id": "25628",
+        "name": "Barista Coffee",
+        "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/7/29/c5e0d7be-fe37-43f1-8bbe-b47de11f360a_25628.jpg",
+        "locality": "Law College Road",
+        "areaName": "Erandwane",
+        "costForTwo": "₹350 for two",
+        "cuisines": [
+            "Beverages",
+            "Snacks",
+            "Desserts"
+        ],
+        "avgRating": 4.6,
+        "parentId": "416281",
+        "avgRatingString": "4.6",
+        "totalRatingsString": "500+",
+        "sla": {
+            "deliveryTime": 26,
+            "lastMileTravel": 1.9,
+            "serviceability": "SERVICEABLE",
+            "slaString": "25-30 mins",
+            "lastMileTravelString": "1.9 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2024-08-24 23:00:00",
+            "opened": true
+        },
+        "badges": {},
+        "isOpen": true,
+        "type": "F",
+        "badgesV2": {
+            "entityBadges": {
+                "imageBased": {},
+                "textBased": {},
+                "textExtendedBadges": {}
+            }
+        },
+        "aggregatedDiscountInfoV3": {
+            "header": "ITEMS",
+            "subHeader": "AT ₹129"
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+                "lottie": {},
+                "video": {}
+            }
+        },
+        "reviewsSummary": {},
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "restaurantOfferPresentationInfo": {},
+        "externalRatings": {
+            "aggregatedRating": {
+                "rating": "3.9",
+                "ratingCount": "1K+"
+            },
+            "source": "GOOGLE",
+            "sourceIconImageId": "v1704440323/google_ratings/rating_google_tag"
+        },
+        "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+    },
+    "analytics": {},
+    "cta": {
+        "link": "https://www.swiggy.com/restaurants/barista-coffee-law-college-road-erandwane-pune-25628",
+        "type": "WEBLINK"
+    }
+}
