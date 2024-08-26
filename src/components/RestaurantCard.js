@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { RESTOCOVERIMG } from "../utils/constants";
-import bike from "../utils/svgs/delivery-bike.svg";
 import placeHolderImg from "../utils/images/placeholder-light.avif";
 import starImg from "./../utils/images/star.png";
 
@@ -41,7 +40,7 @@ const RestaurantCard = (props) => {
           />
         )}
       </div>
-      <div className="ml-4">
+      <div className="ml-2">
         <div className="text-l font-bold text-black mt-[1rem] opacity-[0.8]">
           {name}
         </div>

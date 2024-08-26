@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import _ from "lodash"; // Import lodash for debouncing
 import RestaurantCard, { withTopRated } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -9,6 +10,11 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [allRestaurantsBtn, setAllRestaurantsBtn] = useState(true);
+  const [index, setIndex] = useState(9);
+  const [nextOffset, setNextOffset] = useState("");
+  const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
   const base_url = process.env.REACT_APP_BASE_URL;
 
   const onlineStatus = useOnlineStatus();
@@ -16,6 +22,7 @@ const Body = () => {
   const RestaurantCardTopRated = withTopRated(RestaurantCard);
 
   const topRatedRestaurants = () => {
+    setSearchActive(false);
     const filteredList = listOfRestaurant.filter(
       (restaurant) => restaurant.info.avgRating >= 4.5
     );
@@ -24,15 +31,18 @@ const Body = () => {
   };
 
   const allRestaurants = () => {
+    setSearchActive(false);
     setFilteredRestaurant(listOfRestaurant);
     setAllRestaurantsBtn(true);
   };
 
   const filterRestaurantCard = () => {
+    setSearchActive(true);
+    setAllRestaurantsBtn(false);
     const filteredRestaurant = listOfRestaurant.filter(
       (res) =>
-        res?.info?.name.toLowerCase().includes(searchText.toLowerCase()) || // Check if name includes searchText
-        (res?.info?.cuisines && // Check if cuisines array exists
+        res?.info?.name.toLowerCase().includes(searchText.toLowerCase()) ||
+        (res?.info?.cuisines &&
           res?.info?.cuisines.some((cuisine) =>
             cuisine.toLowerCase().includes(searchText.toLowerCase())
           ))
@@ -46,23 +56,84 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const data = await fetch(`${base_url}/restaurants`);
-      const json = await data.json();
+      const response = await fetch(`${base_url}/restaurants`);
+      const json = await response.json();
       const list =
-        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
 
       setListOfRestaurant(list);
       setFilteredRestaurant(list);
+      setNextOffset(json?.data?.pageOffset?.nextOffset);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
+  const fetchMoreData = async () => {
+    if (loading || !hasMore || searchActive) return;
+
+    setLoading(true);
+    try {
+      const data = await fetch(
+        `${base_url}/restaurantsUpdate?offset=${nextOffset}&collection=${index}`
+      );
+      const json = await data.json();
+
+      const list =
+        json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
+
+      if (Array.isArray(list) && list.length > 0) {
+        setListOfRestaurant((prevItems) => [...prevItems, ...list]);
+        setFilteredRestaurant((prevItems) => [...prevItems, ...list]);
+        setHasMore(true);
+      } else {
+        setHasMore(false);
+      }
+
+      // Update the nextOffset here based on the response
+      const newOffset = json?.data?.pageOffset?.nextOffset;
+      if (newOffset) {
+        setNextOffset(newOffset); // Update the nextOffset state
+      }
+
+      // Increment the index by 15
+      setIndex(
+        json?.data?.pageOffset?.widgetOffset
+          ?.collectionV5RestaurantListWidget_SimRestoRelevance_food_seo
+      );
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Debounced scroll handler
+  const debouncedHandleScroll = useCallback(
+    _.debounce(() => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 1 >=
+        document.documentElement.scrollHeight
+      ) {
+        if (hasMore && !loading && !searchActive) {
+          fetchMoreData();
+        }
+      }
+    }, 300), // Adjust the debounce delay as needed
+    [hasMore, loading, searchActive, fetchMoreData]
+  );
+
+  useEffect(() => {
+    window.addEventListener("scroll", debouncedHandleScroll);
+    return () => window.removeEventListener("scroll", debouncedHandleScroll);
+  }, [debouncedHandleScroll]);
+
   if (onlineStatus === false) {
     return (
-      <h1 style={{ textAlign: "center" }}>
-        Looks like you'are offline!! Please check your internet connection;
+      <h1 className="text-center">
+        Looks like you're offline!! Please check your internet connection.
       </h1>
     );
   }
@@ -127,34 +198,36 @@ const Body = () => {
           )}
         </div>
       </div>
-      <div className="w-10/12 max-tablet:w-full max-desktop:w-9/12 lg_desktop:w-9/12 grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 lg_desktop:grid-cols-6 gap-y-3 gap-x-2 mx-auto my-0 mt-4">
+      <div className="">
         {filteredRestaurant?.length === 0 ? (
-          <div className="text-xl">
+          <div className="text-xl text-center">
             No match found for "<span className="font-bold">{searchText}</span>"
           </div>
         ) : (
-          filteredRestaurant?.map((restaurant) => (
-            <Link
-              to={`/restaurant/${restaurant.info.id}`}
-              className="no-underline text-black mx-auto my-0 "
-              key={restaurant.info.id}
-            >
-              {
-                /* If the restaurant has avgRating greater than 4.5 then label it as Top Rated */
-                restaurant.info.avgRating >= 4.5 ? (
-                  <RestaurantCardTopRated
-                    key={restaurant.info.id}
-                    restoData={restaurant}
-                  />
-                ) : (
-                  <RestaurantCard
-                    key={restaurant.info.id}
-                    restoData={restaurant}
-                  />
-                )
-              }
-            </Link>
-          ))
+          <div className="w-10/12 max-tablet:w-full max-desktop:w-9/12 lg_desktop:w-9/12 grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 lg_desktop:grid-cols-6 gap-y-3 gap-x-2 mx-auto my-0 mt-4">
+            {filteredRestaurant?.map((restaurant) => (
+              <Link
+                to={`/restaurant/${restaurant.info.id}`}
+                className="no-underline text-black mx-auto my-0"
+                key={restaurant.info.id}
+              >
+                {
+                  // If the restaurant has avgRating greater than 4.5 then label it as Top Rated /
+                  restaurant.info.avgRating >= 4.5 ? (
+                    <RestaurantCardTopRated
+                      key={restaurant.info.id}
+                      restoData={restaurant}
+                    />
+                  ) : (
+                    <RestaurantCard
+                      key={restaurant.info.id}
+                      restoData={restaurant}
+                    />
+                  )
+                }
+              </Link>
+            ))}
+          </div>
         )}
       </div>
     </div>
