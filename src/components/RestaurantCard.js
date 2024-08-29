@@ -72,7 +72,7 @@ export const withTopRated = (RestaurantCard) => {
   return (props) => {
     return (
       <div>
-        <label className="absolute bg-green-200 text-black m-2 ml-2 p-2 rounded-lg max-mobile:m-2 max-mobile:ml-2 max-mobile:p-1 max-mobile:text-sm">
+        <label className="absolute bg-green-200 text-black m-2 ml-2 py-1 px-2 rounded-lg max-mobile:m-2 max-mobile:ml-2 max-mobile:p-1 max-mobile:text-sm">
           Top Rated
         </label>
         <RestaurantCard {...props} />

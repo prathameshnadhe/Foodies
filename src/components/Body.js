@@ -1,134 +1,40 @@
-import { useState, useEffect, useCallback } from "react";
-import _ from "lodash"; // Import lodash for debouncing
-import RestaurantCard, { withTopRated } from "./RestaurantCard";
+import React, { useEffect } from "react";
+import useFetchRestaurants from "../utils/useRestaurants";
+import useSearch from "../utils/useSearchMenu";
+import useInfiniteScroll from "../utils/useInfiniteScroll";
+import RestaurantList from "./RestaurantList";
+import TopRatedButton from "./TopRatedButton";
+import SearchBar from "./SearchBar";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import SearchRestaurantList from "./SearchRestaurantList";
 
 const Body = () => {
-  const [listOfRestaurant, setListOfRestaurant] = useState([]);
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const [allRestaurantsBtn, setAllRestaurantsBtn] = useState(true);
-  const [index, setIndex] = useState(9);
-  const [nextOffset, setNextOffset] = useState("");
-  const [hasMore, setHasMore] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [searchActive, setSearchActive] = useState(false);
   const base_url = process.env.REACT_APP_BASE_URL;
+  const {
+    listOfRestaurant,
+    filteredRestaurant,
+    setFilteredRestaurant,
+    loading,
+    fetchMoreData,
+    searchActive,
+    setSearchActive,
+    allRestaurantsBtn,
+    setAllRestaurantsBtn,
+  } = useFetchRestaurants(base_url);
+
+  const { searchText, setSearchText, filterRestaurantCard } =
+    useSearch(listOfRestaurant);
+
+  // Update filtered restaurants when searchText changes
+  useEffect(() => {
+    const filteredList = filterRestaurantCard();
+    setFilteredRestaurant(filteredList);
+  }, [searchText, filterRestaurantCard, setFilteredRestaurant]);
+
+  useInfiniteScroll(fetchMoreData, true, loading, searchActive);
 
   const onlineStatus = useOnlineStatus();
-
-  const RestaurantCardTopRated = withTopRated(RestaurantCard);
-
-  const topRatedRestaurants = () => {
-    setSearchActive(false);
-    const filteredList = listOfRestaurant.filter(
-      (restaurant) => restaurant.info.avgRating >= 4.5
-    );
-    setFilteredRestaurant(filteredList);
-    setAllRestaurantsBtn(false);
-  };
-
-  const allRestaurants = () => {
-    setSearchActive(false);
-    setFilteredRestaurant(listOfRestaurant);
-    setAllRestaurantsBtn(true);
-  };
-
-  const filterRestaurantCard = () => {
-    setSearchActive(true);
-    setAllRestaurantsBtn(false);
-    const filteredRestaurant = listOfRestaurant.filter(
-      (res) =>
-        res?.info?.name.toLowerCase().includes(searchText.toLowerCase()) ||
-        (res?.info?.cuisines &&
-          res?.info?.cuisines.some((cuisine) =>
-            cuisine.toLowerCase().includes(searchText.toLowerCase())
-          ))
-    );
-    setFilteredRestaurant(filteredRestaurant);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`${base_url}/restaurants`);
-      const json = await response.json();
-      const list =
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
-
-      setListOfRestaurant(list);
-      setFilteredRestaurant(list);
-      setNextOffset(json?.data?.pageOffset?.nextOffset);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  const fetchMoreData = async () => {
-    if (loading || !hasMore || searchActive) return;
-
-    setLoading(true);
-    try {
-      const data = await fetch(
-        `${base_url}/restaurantsUpdate?offset=${nextOffset}&collection=${index}`
-      );
-      const json = await data.json();
-
-      const list =
-        json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
-
-      if (Array.isArray(list) && list.length > 0) {
-        setListOfRestaurant((prevItems) => [...prevItems, ...list]);
-        setFilteredRestaurant((prevItems) => [...prevItems, ...list]);
-        setHasMore(true);
-      } else {
-        setHasMore(false);
-      }
-
-      // Update the nextOffset here based on the response
-      const newOffset = json?.data?.pageOffset?.nextOffset;
-      if (newOffset) {
-        setNextOffset(newOffset); // Update the nextOffset state
-      }
-
-      // Increment the index by 15
-      setIndex(
-        json?.data?.pageOffset?.widgetOffset
-          ?.collectionV5RestaurantListWidget_SimRestoRelevance_food_seo
-      );
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Debounced scroll handler
-  const debouncedHandleScroll = useCallback(
-    _.debounce(() => {
-      if (
-        window.innerHeight + document.documentElement.scrollTop + 1 >=
-        document.documentElement.scrollHeight
-      ) {
-        if (hasMore && !loading && !searchActive) {
-          fetchMoreData();
-        }
-      }
-    }, 300), // Adjust the debounce delay as needed
-    [hasMore, loading, searchActive, fetchMoreData]
-  );
-
-  useEffect(() => {
-    window.addEventListener("scroll", debouncedHandleScroll);
-    return () => window.removeEventListener("scroll", debouncedHandleScroll);
-  }, [debouncedHandleScroll]);
 
   if (onlineStatus === false) {
     return (
@@ -142,94 +48,29 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="ml-auto mr-auto">
-      <div className="w-10/12 flex justify-center max-mobile:justify-between ml-auto mr-auto max-mobile:w-full max-tablet:w-full">
-        <div className="m-4 flex items-center input-main">
-          <div className="max-w-md mx-auto">
-            <div className="relative">
-              <div className="absolute inset-y-0 start-0 flex items-center ps-3">
-                <svg
-                  className="w-4 h-4 text-gray-500"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                  />
-                </svg>
-              </div>
-              <input
-                type="text"
-                id="default-search"
-                className="block w-[24rem] max-mobile:w-[14rem] max-tablet:w-[20rem] max-laptop:w-[20rem] p-4 ps-10 text-md text-gray-800 border-0 focus:outline-none shadow-custom rounded-lg bg-[#fff]"
-                placeholder="Pizza, Burger, Biryani..."
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-              />
-              <button
-                className="text-black font-bold absolute end-[1rem] bottom-2.5 mobile:bottom-[0.4rem] bg-green-200 border-solid border-green-300 cursor-pointer hover:bg-green-400 hover:border-green-500 rounded-lg text-md px-4 py-2 max-mobile:px-2  max-mobile:py-1 opacity-[0.9]"
-                onClick={filterRestaurantCard}
-              >
-                Search
-              </button>
-            </div>
-          </div>
+      <div className="m-4 flex justify-center items-center input-main">
+        <div>
+          <SearchBar
+            searchText={searchText}
+            setSearchText={setSearchText}
+            filterRestaurantCard={filterRestaurantCard}
+          />
         </div>
-        <div className="flex items-center input-padding">
-          {allRestaurantsBtn ? (
-            <button
-              className="px-4 py-2 bg-green-200 text-black rounded-lg font-bold border-1 border-green-800 hover:bg-green-400 hover:border-green-500 cursor-pointer max-mobile:px-2 max-mobile:py-1 max-mobile:mr-4 opacity-[0.9]"
-              onClick={topRatedRestaurants}
-            >
-              Top Rated Restaurants
-            </button>
-          ) : (
-            <button
-              className="px-4 py-2 bg-green-200 text-black rounded-lg font-bold border-1 border-green-800 hover:bg-green-400 hover:border-green-500 cursor-pointer max-mobile:px-2 max-mobile:py-1 max-mobile:mr-4 opacity-[0.9]"
-              onClick={allRestaurants}
-            >
-              All Restaurants
-            </button>
-          )}
+        <div>
+          <TopRatedButton
+            listOfRestaurant={listOfRestaurant}
+            setFilteredRestaurant={setFilteredRestaurant}
+            setAllRestaurantsBtn={setAllRestaurantsBtn}
+            allRestaurantsBtn={allRestaurantsBtn}
+            setSearchActive={setSearchActive}
+          />
         </div>
       </div>
-      <div className="">
-        {filteredRestaurant?.length === 0 ? (
-          <div className="text-xl text-center">
-            No match found for "<span className="font-bold">{searchText}</span>"
-          </div>
-        ) : (
-          <div className="w-10/12 max-tablet:w-full max-desktop:w-9/12 lg_desktop:w-9/12 grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 lg_desktop:grid-cols-6 gap-y-3 gap-x-2 mx-auto my-0 mt-4">
-            {filteredRestaurant?.map((restaurant) => (
-              <Link
-                to={`/restaurant/${restaurant.info.id}`}
-                className="no-underline text-black mx-auto my-0"
-                key={restaurant.info.id}
-              >
-                {
-                  // If the restaurant has avgRating greater than 4.5 then label it as Top Rated /
-                  restaurant.info.avgRating >= 4.5 ? (
-                    <RestaurantCardTopRated
-                      key={restaurant.info.id}
-                      restoData={restaurant}
-                    />
-                  ) : (
-                    <RestaurantCard
-                      key={restaurant.info.id}
-                      restoData={restaurant}
-                    />
-                  )
-                }
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
+      {searchText.length !== 0 ? (
+        <SearchRestaurantList searchText={searchText} />
+      ) : (
+        <RestaurantList filteredRestaurant={filteredRestaurant} />
+      )}
     </div>
   );
 };
