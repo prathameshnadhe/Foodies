@@ -2,10 +2,10 @@ import React from "react";
 import closeImg from "../utils/images/close.png";
 import searchImg from "../utils/images/searchMini.png";
 
-const SearchBar = ({ searchText, setSearchText, filterRestaurantCard }) => {
+const SearchBar = ({ searchText, setSearchText, setAllSearchResults }) => {
   const handleClearSearch = () => {
     setSearchText("");
-    // filterRestaurantCard();
+    setAllSearchResults(false);
   };
 
   return (

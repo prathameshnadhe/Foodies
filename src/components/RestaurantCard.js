@@ -16,7 +16,7 @@ const RestaurantCard = (props) => {
   };
 
   const getDeliveryTimeRange = (time) => {
-    if (!time) return ""; // Handle undefined or null time
+    if (!time) return "30-35 mins"; // Handle undefined or null time
     const lowerBound = Math.floor(time / 5) * 5;
     const upperBound = lowerBound + 5;
     return `${lowerBound}-${upperBound} mins`;
@@ -25,20 +25,12 @@ const RestaurantCard = (props) => {
   return (
     <div className="min-mobile:flex min-mobile:flex-wrap min-mobile:justify-center bg-[#fff] min-mobile:w-[18rem] h-[18rem] rounded-[1rem] p-1 m-1 hover:transition-all mobile:hover:mt-[-1rem] hover:transform hover:duration-300 duration-500 max-mobile:flex max-mobile:w-[22rem] max-mobile:h-[9rem] mx-auto my-0">
       <div>
-        {cloudinaryImageId ? (
-          <img
-            className="h-[11rem] w-[16rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem] max-w-none"
-            src={imgSrc}
-            alt="resto-logo"
-            onError={handleError}
-          />
-        ) : (
-          <img
-            className="h-[11rem] w-[16rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem] max-w-none"
-            src={placeHolderImg}
-            alt="resto-logo"
-          />
-        )}
+        <img
+          className="h-[11rem] w-[16rem] rounded-[1rem] object-cover max-mobile:w-[8rem] max-mobile:h-[8rem] max-w-none"
+          src={imgSrc}
+          alt="resto-logo"
+          onError={handleError}
+        />
       </div>
       <div className="ml-2">
         <div className="text-l font-bold text-black mt-[1rem] opacity-[0.8]">

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useFetchRestaurants from "../utils/useRestaurants";
 import useSearch from "../utils/useSearchMenu";
 import useInfiniteScroll from "../utils/useInfiniteScroll";
@@ -8,6 +8,7 @@ import SearchBar from "./SearchBar";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import SearchRestaurantList from "./SearchRestaurantList";
+import AllSearchResults from "./AllSearchResults";
 
 const Body = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
@@ -23,14 +24,8 @@ const Body = () => {
     setAllRestaurantsBtn,
   } = useFetchRestaurants(base_url);
 
-  const { searchText, setSearchText, filterRestaurantCard } =
-    useSearch(listOfRestaurant);
-
-  // Update filtered restaurants when searchText changes
-  useEffect(() => {
-    const filteredList = filterRestaurantCard();
-    setFilteredRestaurant(filteredList);
-  }, [searchText, filterRestaurantCard, setFilteredRestaurant]);
+  const { searchText, setSearchText, allSearchResults, setAllSearchResults } =
+    useSearch();
 
   useInfiniteScroll(fetchMoreData, true, loading, searchActive);
 
@@ -53,7 +48,7 @@ const Body = () => {
           <SearchBar
             searchText={searchText}
             setSearchText={setSearchText}
-            filterRestaurantCard={filterRestaurantCard}
+            setAllSearchResults={setAllSearchResults}
           />
         </div>
         <div>
@@ -67,7 +62,14 @@ const Body = () => {
         </div>
       </div>
       {searchText.length !== 0 ? (
-        <SearchRestaurantList searchText={searchText} />
+        allSearchResults ? (
+          <AllSearchResults searchText={searchText} />
+        ) : (
+          <SearchRestaurantList
+            searchText={searchText}
+            setAllSearchResults={setAllSearchResults}
+          />
+        )
       ) : (
         <RestaurantList filteredRestaurant={filteredRestaurant} />
       )}

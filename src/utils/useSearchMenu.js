@@ -1,24 +1,14 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 
-const useSearch = (listOfRestaurant) => {
+const useSearch = () => {
   const [searchText, setSearchText] = useState("");
-
-  const filterRestaurantCard = useCallback(() => {
-    const filteredRestaurant = listOfRestaurant.filter(
-      (res) =>
-        res?.info?.name.toLowerCase().includes(searchText.toLowerCase()) ||
-        (res?.info?.cuisines &&
-          res?.info?.cuisines.some((cuisine) =>
-            cuisine.toLowerCase().includes(searchText.toLowerCase())
-          ))
-    );
-    return filteredRestaurant;
-  }, [listOfRestaurant, searchText]);
+  const [allSearchResults, setAllSearchResults] = useState(false);
 
   return {
     searchText,
     setSearchText,
-    filterRestaurantCard,
+    allSearchResults,
+    setAllSearchResults,
   };
 };
 

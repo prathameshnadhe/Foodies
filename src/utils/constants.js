@@ -12,3 +12,6 @@ export const MENU_ITEM_IMG =
 
 export const SEARCH_REST_IMG =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_112,h_112,c_fill/";
+
+export const RESTAURANTIMG =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_324,c_fill/";
