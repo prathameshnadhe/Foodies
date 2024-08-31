@@ -63,7 +63,7 @@ const TopRestaurantChain = ({ listOfRestaurant }) => {
           {restoData?.map((resto) => (
             <Link
               to={`/restaurant/${resto?.info?.id}`}
-              className="no-underline text-black mx-auto my-0 bg-[#fff] w-[18rem] h-[18rem] max-mobile:h-[16rem] rounded-[1rem] p-1 m-1 "
+              className="no-underline text-black mx-auto my-0 bg-[#fff] w-[18rem] rounded-[1rem] p-1 m-1 "
               key={resto?.info?.id}
             >
               <div>
