@@ -9,6 +9,7 @@ import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import SearchRestaurantList from "./SearchRestaurantList";
 import AllSearchResults from "./AllSearchResults";
+import TopRestaurantChain from "./TopRestaurantChain";
 
 const Body = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
@@ -71,7 +72,17 @@ const Body = () => {
           />
         )
       ) : (
-        <RestaurantList filteredRestaurant={filteredRestaurant} />
+        <div>
+          <div>
+            <TopRestaurantChain listOfRestaurant={listOfRestaurant} />
+          </div>
+          <div>
+            <RestaurantList
+              filteredRestaurant={filteredRestaurant}
+              listOfRestaurant={listOfRestaurant}
+            />
+          </div>
+        </div>
       )}
     </div>
   );

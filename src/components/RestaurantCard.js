@@ -34,7 +34,7 @@ const RestaurantCard = (props) => {
       </div>
       <div className="ml-2">
         <div className="text-l font-bold text-black mt-[1rem] opacity-[0.8]">
-          {name}
+          {name.length <= 24 ? name : name.slice(0, 24) + "..."}
         </div>
         <div className="flex items-center text-sm text-gray-700 mt-1">
           <span className="flex items-center mr-2">
@@ -47,7 +47,7 @@ const RestaurantCard = (props) => {
           <span className="max-mobile:hidden">{costForTwo}</span>
         </div>
         <div className="text-gray-600 text-base max-mobile:text-sm">
-          {cuisines.length <= 3
+          {cuisines.length <= 2
             ? cuisines.join(", ")
             : cuisines.slice(0, 2).join(", ")}
         </div>

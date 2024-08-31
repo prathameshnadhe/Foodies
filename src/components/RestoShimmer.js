@@ -7,7 +7,7 @@ const RestoShimmer = () => {
     window.scrollTo(0, 0);
     const timer = setTimeout(() => {
       setShowContent(true);
-    }, 5000); // 5 seconds in milliseconds
+    }, 10000); // 10 seconds in milliseconds
 
     return () => clearTimeout(timer);
   }, []);

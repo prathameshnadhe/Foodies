@@ -18,12 +18,13 @@ const useRestaurants = (base_url) => {
     try {
       const response = await fetch(`${base_url}/restaurants`);
       const json = await response.json();
-      const list =
+
+      const filterList =
         json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
 
-      setListOfRestaurant(list);
-      setFilteredRestaurant(list);
+      setListOfRestaurant(json);
+      setFilteredRestaurant(filterList);
       setNextOffset(json?.data?.pageOffset?.nextOffset);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -45,7 +46,6 @@ const useRestaurants = (base_url) => {
           ?.restaurants;
 
       if (Array.isArray(list) && list.length > 0) {
-        setListOfRestaurant((prevItems) => [...prevItems, ...list]);
         setFilteredRestaurant((prevItems) => [...prevItems, ...list]);
         setHasMore(true);
       } else {

@@ -8,8 +8,11 @@ const TopRatedButton = ({
   setSearchActive,
 }) => {
   const topRatedRestaurants = () => {
+    const list =
+      listOfRestaurant.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
     setSearchActive(false);
-    const filteredList = listOfRestaurant.filter(
+    const filteredList = list.filter(
       (restaurant) => restaurant.info.avgRating >= 4.5
     );
     setFilteredRestaurant(filteredList);
@@ -17,8 +20,11 @@ const TopRatedButton = ({
   };
 
   const allRestaurants = () => {
+    const list =
+      listOfRestaurant.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
     setSearchActive(false);
-    setFilteredRestaurant(listOfRestaurant);
+    setFilteredRestaurant(list);
     setAllRestaurantsBtn(true);
   };
 
