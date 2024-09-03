@@ -38,13 +38,13 @@ const TopRestaurantChain = ({ listOfRestaurant }) => {
         <div className="flex space-x-2">
           <button
             onClick={() => scroll(-300)}
-            className="w-[35px] h-[35px] rounded-[50%] bg-gray-100 border border-gray-300  shadow-md hover:bg-gray-200 opacity-[0.8]"
+            className="w-[35px] h-[35px] rounded-[50%] bg-gray-100 border border-gray-300  shadow-md hover:bg-gray-200 opacity-[0.8] max-mobile:hidden"
           >
             <img src={leftImg} alt="-" />
           </button>
           <button
             onClick={() => scroll(300)}
-            className="w-[35px] h-[35px] rounded-[50%] bg-gray-100 border border-gray-300  shadow-md hover:bg-gray-200 opacity-[0.8]"
+            className="w-[35px] h-[35px] rounded-[50%] bg-gray-100 border border-gray-300  shadow-md hover:bg-gray-200 opacity-[0.8] max-mobile:hidden"
           >
             <img src={rightImg} alt="-" />
           </button>
