@@ -10,6 +10,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import RecommendedDishRestaurantList from "./components/RecommendedDishRestaurantList";
 
 // Chunking
 // Code Splitting
@@ -81,6 +82,10 @@ const appRouter = createBrowserRouter([
       {
         path: "restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "recommended/:collectionId",
+        element: <RecommendedDishRestaurantList />,
       },
     ],
     errorElement: <Error />,

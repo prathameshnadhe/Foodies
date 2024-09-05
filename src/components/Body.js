@@ -10,6 +10,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import SearchRestaurantList from "./SearchRestaurantList";
 import AllSearchResults from "./AllSearchResults";
 import TopRestaurantChain from "./TopRestaurantChain";
+import RecommenededDishes from "./RecommendedDishes";
 
 const Body = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
@@ -73,6 +74,9 @@ const Body = () => {
         )
       ) : (
         <div>
+          <div>
+            <RecommenededDishes listOfRestaurant={listOfRestaurant} />
+          </div>
           <div>
             <TopRestaurantChain listOfRestaurant={listOfRestaurant} />
           </div>

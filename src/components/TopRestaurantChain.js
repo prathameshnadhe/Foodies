@@ -37,23 +37,23 @@ const TopRestaurantChain = ({ listOfRestaurant }) => {
         </p>
         <div className="flex space-x-2">
           <button
-            onClick={() => scroll(-300)}
+            onClick={() => scroll(-500)}
             className="w-[35px] h-[35px] rounded-[50%] bg-gray-100 border border-gray-300  shadow-md hover:bg-gray-200 opacity-[0.8] max-mobile:hidden"
           >
-            <img src={leftImg} alt="-" />
+            <img src={leftImg} alt="<-" />
           </button>
           <button
-            onClick={() => scroll(300)}
+            onClick={() => scroll(500)}
             className="w-[35px] h-[35px] rounded-[50%] bg-gray-100 border border-gray-300  shadow-md hover:bg-gray-200 opacity-[0.8] max-mobile:hidden"
           >
-            <img src={rightImg} alt="-" />
+            <img src={rightImg} alt="->" />
           </button>
         </div>
       </div>
       <div className="relative flex items-center">
         <div
           ref={scrollRef}
-          className="flex overflow-x-scroll scroll-smooth w-full h-auto space-x-4"
+          className="flex overflow-x-scroll scroll-smooth w-full h-auto space-x-4  mb-6"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
